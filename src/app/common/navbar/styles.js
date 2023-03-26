@@ -34,7 +34,6 @@ export const CircularAvatar = styled(Image)`
   background: #fff;
 `;
 
-
 export const NavItem = styled.p`
   color: #eff1f6bf;
   align-self: flex-end;
@@ -74,4 +73,34 @@ export const CircularContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const NavIcon = styled.div`
+  align-self: center;
+  margin-right: 1.5rem;
+  display: flex;
+  cursor: pointer;
+`;
+
+export const ScoreText = styled.p`
+  color: rgb(138 138 138);
+  font-weight: 500;
+  font-size: 1.08rem;
+  margin-left: 0.36rem;
+`;
+
+export const PremiumButton = styled.div`
+  // background-color: #1a202c;
+  border-radius: 5px;
+  color: rgb(255 161 22);
+  cursor: pointer;
+`;
+
+export const PremiumText = styled.p`
+  background-color: #ffffff1a;
+  width: fit-content;
+  font-size: 1.02rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 5px;
+  height: fit-content;
 `;

@@ -8,9 +8,15 @@ import {
   OptionsContainer,
   CircularAvatar,
   CircularContainer,
+  NavIcon,
+  ScoreText,
+  PremiumButton,
+  PremiumText,
 } from "./styles";
 
 import AvatarPic from "@/assets/p.jpeg";
+import BellSvg from "@/assets/bell.svg";
+import FireSvg from "@/assets/fire.svg";
 
 const options1 = [
   {
@@ -74,7 +80,19 @@ const Navbar = () => {
           </OptionsContainer>
         </NavItemContainer>
         <CircularContainer>
-          <CircularAvatar alt="pic" src={AvatarPic} width="24" height="24" />
+          <NavIcon>
+            <PremiumButton>
+              <PremiumText>Premium</PremiumText>
+            </PremiumButton>
+          </NavIcon>
+          <NavIcon>
+            <StyledImage alt="img" src={BellSvg} width="25" height="25" />
+          </NavIcon>
+          <NavIcon>
+            <StyledImage alt="img" src={FireSvg} width="25" height="25" />
+            <ScoreText>0</ScoreText>
+          </NavIcon>
+          <CircularAvatar alt="pic" src={AvatarPic} width="27" height="27" />
         </CircularContainer>
       </NavContent>
     </NavContainer>
