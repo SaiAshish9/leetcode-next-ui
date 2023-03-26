@@ -14,7 +14,20 @@ import {
   StatsContent,
   SessionTopContainer,
   AnonymousButton,
+  AnonymousSettingsButton,
+  AnonymousRow,
+  StyledImg,
+  StyledPlanImg,
+  PlanContent,
+  PlanTitle,
+  StudyPlanContent,
+  PlanSubTitle,
+  StyledArrowRightImg,
+  StudyPlanRightContent,
 } from "./styles";
+import SettingsImg from "@/assets/settings.svg";
+import StudyPlanImg from "@/assets/lc_sts.svg";
+import ArrowRightImg from "@/assets/arrow_right.svg";
 
 const SessionCard = () => {
   return (
@@ -23,7 +36,12 @@ const SessionCard = () => {
         <Content>
           <SessionTopContainer>
             <SessionText>Session</SessionText>
-            <AnonymousButton>Anonymous</AnonymousButton>
+            <AnonymousRow>
+              <AnonymousButton>Anonymous</AnonymousButton>
+              <AnonymousSettingsButton>
+                <StyledImg alt="image" src={SettingsImg} />
+              </AnonymousSettingsButton>
+            </AnonymousRow>
           </SessionTopContainer>
           <StatsContainer>
             <Circle />
@@ -53,8 +71,25 @@ const SessionCard = () => {
           </StatsContainer>
         </Content>
       </Card>
-      <Card />
-      <Card />
+      <Card>
+        <Content>
+          <StudyPlanContent>
+            <StyledPlanImg src={StudyPlanImg} alt="plan" />
+            <StudyPlanRightContent>
+              <PlanContent>
+                <PlanTitle>Study Plan</PlanTitle>
+                <PlanSubTitle>Complete and win badges</PlanSubTitle>
+              </PlanContent>
+              <StyledArrowRightImg src={ArrowRightImg} alt="img" />
+            </StudyPlanRightContent>
+          </StudyPlanContent>
+        </Content>
+      </Card>
+      <Card>
+        <Content>
+          <SessionText>Featured Lists</SessionText>
+        </Content>
+      </Card>
     </SessionContainer>
   );
 };

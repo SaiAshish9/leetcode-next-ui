@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+import Image from "next/image";
+
 export const SessionContainer = styled.div`
   width: 100%;
 `;
@@ -13,7 +15,7 @@ export const SessionTopContainer = styled.div`
 export const Card = styled.div`
   background: rgb(40 40 40);
   width: 100%;
-  padding: 1rem 0;
+  padding: 0.7rem 0;
   border-radius: 0.5rem;
   box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0px 1px 3px #0000003d,
     0px 2px 8px #00000029;
@@ -21,7 +23,7 @@ export const Card = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 0 1rem;
+  padding: 0 0.8rem;
 `;
 
 export const SessionText = styled.p`
@@ -92,4 +94,64 @@ export const AnonymousButton = styled.div`
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   width: 5rem;
+  margin-right: 1px;
+`;
+
+export const AnonymousSettingsButton = styled.div`
+  color: #eff2f699;
+  background-color: #ffffff1a;
+  padding: 0.375rem;
+  font-size: 12px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+`;
+
+export const AnonymousRow = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const StyledImg = styled(Image)`
+  width: 12px;
+  height: 12px;
+  position: relative;
+  top: 1px;
+`;
+
+export const StyledPlanImg = styled(Image)`
+  width: 2.5rem;
+`;
+
+export const PlanContent = styled.div`
+  margin-left: 0.7rem;
+`;
+
+export const PlanTitle = styled.p`
+  font-size: 0.8rem;
+  font-weight: 500;
+`;
+
+export const PlanSubTitle = styled.p`
+  font-size: 0.75rem;
+  color: #eff2f699;
+  margin-top: 2px;
+`;
+
+export const StudyPlanContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const StudyPlanRightContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const StyledArrowRightImg = styled(Image)`
+  height: 0.9em;
+  width: 0.9em;
 `;

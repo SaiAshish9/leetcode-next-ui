@@ -42,7 +42,7 @@ export const NavItem = styled.p`
   font-size: 0.9rem;
   padding-bottom: 0.75rem;
   font-weight: 400;
-  border-bottom: 3px solid transparent;
+  border-bottom: 2.4px solid transparent;
   :hover {
     color: rgba(255, 255, 255);
   }
@@ -56,7 +56,7 @@ export const NavItem = styled.p`
         `
       : text == "Problems"
       ? css`
-          border-bottom: 3px solid #fff;
+          border-bottom: 2.4px solid #fff;
         `
       : css``};
 `;
@@ -105,4 +105,9 @@ export const PremiumText = styled.p`
   padding: 0.5rem 0.75rem;
   border-radius: 5px;
   height: fit-content;
+`;
+
+export const StudyPlanContent = styled.div`
+  display: flex;
+  align-items: center;
 `;
