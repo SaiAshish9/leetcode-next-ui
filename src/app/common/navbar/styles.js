@@ -22,7 +22,7 @@ export const NavContent = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0 1.25rem;
-  height: 3.9rem;
+  height: 3.1rem;
 `;
 
 export const StyledImage = styled(Image)`
@@ -40,7 +40,7 @@ export const NavItem = styled.p`
   margin-left: 1.75rem;
   cursor: pointer;
   font-size: 1rem;
-  padding-bottom: 1.05rem;
+  padding-bottom: 0.75rem;
   font-weight: 400;
   border-bottom: 3px solid transparent;
   :hover {
@@ -77,7 +77,7 @@ export const CircularContainer = styled.div`
 
 export const NavIcon = styled.div`
   align-self: center;
-  margin-right: 1.5rem;
+  margin-right: 1.2rem;
   display: flex;
   cursor: pointer;
 `;
@@ -85,8 +85,10 @@ export const NavIcon = styled.div`
 export const ScoreText = styled.p`
   color: rgb(138 138 138);
   font-weight: 500;
-  font-size: 1.08rem;
-  margin-left: 0.36rem;
+  font-size: 14px;
+  margin-left: 0.27rem;
+  position: relative;
+  top: 2px;
 `;
 
 export const PremiumButton = styled.div`
@@ -99,8 +101,8 @@ export const PremiumButton = styled.div`
 export const PremiumText = styled.p`
   background-color: #ffffff1a;
   width: fit-content;
-  font-size: 1.02rem;
-  padding: 0.6rem 0.75rem;
+  font-size: 14px;
+  padding: 0.5rem 0.75rem;
   border-radius: 5px;
   height: fit-content;
 `;

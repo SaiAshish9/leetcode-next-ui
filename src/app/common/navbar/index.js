@@ -86,13 +86,13 @@ const Navbar = () => {
             </PremiumButton>
           </NavIcon>
           <NavIcon>
-            <StyledImage alt="img" src={BellSvg} width="25" height="25" />
+            <StyledImage alt="img" src={BellSvg} width="24" height="24" />
           </NavIcon>
           <NavIcon>
-            <StyledImage alt="img" src={FireSvg} width="25" height="25" />
+            <StyledImage alt="img" src={FireSvg} width="24" height="24" />
             <ScoreText>0</ScoreText>
           </NavIcon>
-          <CircularAvatar alt="pic" src={AvatarPic} width="27" height="27" />
+          <CircularAvatar alt="pic" src={AvatarPic} width="24" height="24" />
         </CircularContainer>
       </NavContent>
     </NavContainer>
