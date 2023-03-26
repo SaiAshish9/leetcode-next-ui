@@ -11,7 +11,7 @@ export const StyledImg = styled(Image)`
 `;
 
 export const Container = styled.div`
-  padding-top: 3rem;
+  padding-top: 2.7rem;
   display: flex;
   justify-content: space-between;
   width: 100%;

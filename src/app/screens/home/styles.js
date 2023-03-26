@@ -12,13 +12,13 @@ export const Content = styled.div`
   padding-top: 1.5rem;
   display: flex;
   justify-content: space-between;
-  padding-right: 11vw;
+  padding-right: 10vw;
 `;
 
 export const TopLeftContainer = styled.div`
-  width: 76%;
+  width: 75%;
 `;
 
 export const TopRightContainer = styled.div`
-  width: 21.6%;
+  width: 23%;
 `;
