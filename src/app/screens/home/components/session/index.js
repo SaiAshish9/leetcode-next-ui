@@ -24,12 +24,43 @@ import {
   PlanSubTitle,
   StyledArrowRightImg,
   StudyPlanRightContent,
+  FeaturedContent,
+  FeaturedContentItem,
+  FeaturedStyledImg,
+  FeaturedStyledText,
+  ShowMoreText,
+  StyledArrowDownImg,
+  ShowMoreContent,
+  LockImage,
+  LockImageContainer,
 } from "./styles";
 import SettingsImg from "@/assets/settings.svg";
 import StudyPlanImg from "@/assets/lc_sts.svg";
 import ArrowRightImg from "@/assets/arrow_right.svg";
+import ArrowDownImg from "@/assets/arrow_down.svg";
+import LockSvg from "@/assets/lock.svg";
+
+import AssetImg1 from "@/assets/asset1.png";
+import AssetImg2 from "@/assets/asset2.png";
+import AssetImg3 from "@/assets/asset3.png";
 
 const SessionCard = () => {
+  const assetInfo = [
+    {
+      img: AssetImg1,
+      text: "Top Interview Questions",
+    },
+    {
+      img: AssetImg2,
+      text: "Top 100 Liked Questions",
+    },
+    {
+      img: AssetImg3,
+      text: "Top Facebook Questions",
+      locked: true,
+    },
+  ];
+
   return (
     <SessionContainer>
       <Card>
@@ -88,6 +119,21 @@ const SessionCard = () => {
       <Card>
         <Content>
           <SessionText>Featured Lists</SessionText>
+          <FeaturedContent>
+            {assetInfo.map((i, _) => (
+              <FeaturedContentItem key={i.text}>
+                <FeaturedStyledImg src={i.img} alt="image" />
+                <LockImageContainer>
+                  <FeaturedStyledText>{i.text}</FeaturedStyledText>
+                  {i.locked && <LockImage src={LockSvg} alt="lock" />}
+                </LockImageContainer>
+              </FeaturedContentItem>
+            ))}
+          </FeaturedContent>
+          <ShowMoreContent>
+            <StyledArrowDownImg src={ArrowDownImg} alt="img" />
+            <ShowMoreText>Show More</ShowMoreText>
+          </ShowMoreContent>
         </Content>
       </Card>
     </SessionContainer>

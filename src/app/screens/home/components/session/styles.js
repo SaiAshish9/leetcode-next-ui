@@ -155,3 +155,62 @@ export const StyledArrowRightImg = styled(Image)`
   height: 0.9em;
   width: 0.9em;
 `;
+
+export const StyledFeaturedImg = styled(Image)`
+  width: 2.4rem;
+`;
+
+export const FeaturedContent = styled.div`
+  margin-top: 1rem;
+`;
+
+export const FeaturedContentItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.8rem;
+`;
+
+export const ShowMoreText = styled.p`
+  font-size: 0.72rem;
+  color: rgb(140 140 140);
+`;
+
+export const FeaturedStyledImg = styled(Image)`
+  height: 2rem;
+  width: 2rem;
+  border-radius: 5px;
+  margin-right: 0.7rem;
+`;
+
+export const FeaturedStyledText = styled.p`
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.8rem;
+`;
+
+export const StyledArrowDownImg = styled(Image)`
+  height: 8px;
+  width: 8px;
+  margin: 0.5rem 0;
+  margin-right: 0.5rem;
+`;
+
+export const ShowMoreContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  cursor: pointer;
+`;
+
+export const LockImage = styled(Image)`
+  position: relative;
+  bottom: 2px;
+`;
+
+export const LockImageContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
