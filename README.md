@@ -7,3 +7,5 @@ https://beta.nextjs.org/docs/rendering/server-and-client-components
 ```
 npx create-next-app leetcode-web-ui
 ```
+
+https://leetcode.com/discuss/interview-question/352460/Google-Online-Assessment-Questions
