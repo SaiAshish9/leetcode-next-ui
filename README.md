@@ -2,6 +2,8 @@ https://javascript.plainenglish.io/why-create-react-app-is-outdated-in-2022-b1d9
 
 https://react.dev/learn/start-a-new-react-project
 
+https://beta.nextjs.org/docs/rendering/server-and-client-components
+
 ```
 npx create-next-app leetcode-web-ui
 ```
