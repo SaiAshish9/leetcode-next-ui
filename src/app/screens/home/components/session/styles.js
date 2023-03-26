@@ -4,6 +4,12 @@ export const SessionContainer = styled.div`
   width: 100%;
 `;
 
+export const SessionTopContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const Card = styled.div`
   background: rgb(40 40 40);
   width: 100%;
@@ -82,4 +88,8 @@ export const AnonymousButton = styled.div`
   color: #eff2f699;
   background-color: #ffffff1a;
   padding: 0.375rem;
+  font-size: 12px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 5rem;
 `;

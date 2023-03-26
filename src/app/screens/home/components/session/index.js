@@ -12,6 +12,8 @@ import {
   Circle,
   StatsContainer,
   StatsContent,
+  SessionTopContainer,
+  AnonymousButton,
 } from "./styles";
 
 const SessionCard = () => {
@@ -19,7 +21,10 @@ const SessionCard = () => {
     <SessionContainer>
       <Card>
         <Content>
-          <SessionText>Session</SessionText>
+          <SessionTopContainer>
+            <SessionText>Session</SessionText>
+            <AnonymousButton>Anonymous</AnonymousButton>
+          </SessionTopContainer>
           <StatsContainer>
             <Circle />
             <StatsContent>
