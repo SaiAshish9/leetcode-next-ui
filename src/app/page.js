@@ -1,9 +1,17 @@
-import styles from './page.module.css'
+"use client";
+
+import { Navbar } from "./common";
+import { HomeScreen } from "./screens";
+
+function HomeScreenContainer() {
+  return (
+    <>
+      <Navbar />
+      <HomeScreen />
+    </>
+  );
+}
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-     
-    </main>
-  )
+  return <HomeScreenContainer />;
 }
