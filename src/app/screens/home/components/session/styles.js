@@ -20,10 +20,13 @@ export const Content = styled.div`
 
 export const SessionText = styled.p`
   color: #eff1f6bf;
+  font-size: 0.8rem;
+  font-weight: 500;
 `;
 
 export const LevelText = styled.p`
-  margin-right: 0.9rem;
+  margin-right: 0.8rem;
+  font-size: 0.8rem;
   ${({ easy, medium }) =>
     easy
       ? css`
@@ -41,7 +44,7 @@ export const LevelText = styled.p`
 export const ScoreText = styled.span`
   color: #eff1f6bf;
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 `;
 
 export const TotalText = styled.span`
@@ -52,15 +55,16 @@ export const TotalText = styled.span`
 export const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+  align-items: center;
 `;
 
 export const ScoreTextContainer = styled.p``;
 
 export const Circle = styled.div`
-  width: 84px;
-  height: 84px;
-  border: 4px solid rgb(74 74 74);
+  width: 81px;
+  height: 81px;
+  border: 3px solid rgb(74 74 74);
   border-radius: 50%;
   cursor: pointer;
 `;
