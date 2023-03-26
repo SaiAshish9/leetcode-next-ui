@@ -39,7 +39,7 @@ export const NavItem = styled.p`
   align-self: flex-end;
   margin-left: 1.75rem;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding-bottom: 0.75rem;
   font-weight: 400;
   border-bottom: 3px solid transparent;

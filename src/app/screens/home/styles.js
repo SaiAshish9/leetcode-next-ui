@@ -9,7 +9,7 @@ export const HomeComponent = styled.div`
 
 export const Content = styled.div`
   padding: 0 10vw;
-  padding-top: 3rem;
+  padding-top: 1.5rem;
   display: flex;
   justify-content: space-between;
   padding-right: 11vw;
