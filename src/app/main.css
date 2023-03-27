@@ -180,8 +180,6 @@ select,
 textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
 }
 
 /**
@@ -437,11 +435,6 @@ textarea {
   resize: vertical;
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: #9ca3af;
-}
-
 button,
 [role="button"] {
   cursor: pointer;
@@ -484,7 +477,6 @@ input,
 optgroup,
 select,
 textarea {
-  padding: 0;
   line-height: inherit;
   color: inherit;
 }

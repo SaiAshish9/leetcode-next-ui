@@ -102,7 +102,7 @@ export const PremiumText = styled.p`
   background-color: #ffffff1a;
   width: fit-content;
   font-size: 14px;
-  padding: 0.5rem 0.75rem;
+  padding: 0.375rem 0.75rem;
   border-radius: 5px;
   height: fit-content;
 `;

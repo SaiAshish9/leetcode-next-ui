@@ -11,6 +11,7 @@ import {
   StyledSearchImage,
   StyledSettingsImage,
   TextInputContainer,
+  StyledSettingsImageContainer,
 } from "./styles";
 
 import DropdownArrorDownImg from "@/assets/dropdown_arrow_down.svg";
@@ -47,7 +48,9 @@ const DropdownCont = () => {
           <StyledSearchImage src={SearchIcon} alt="img" />
           <InputContainer placeholder="Search questions" />
         </TextInputContainer>
-        <StyledSettingsImage src={SettingsImg} alt="img" />
+        <StyledSettingsImageContainer>
+          <StyledSettingsImage src={SettingsImg} alt="img" />
+        </StyledSettingsImageContainer>
       </DropdownContainer>
       <PickOneContainer>
         <BubbleContainer>

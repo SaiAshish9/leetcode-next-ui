@@ -62,16 +62,19 @@ export const BubbleContainer = styled.div`
 `;
 
 export const StyledSettingsImage = styled(Image)`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
   height: 1.8rem;
   width: 1rem;
+`;
+
+export const StyledSettingsImageContainer = styled.div`
   box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0px 1px 3px #0000003d,
     0px 2px 8px #00000029;
   border-radius: 5px;
   background-color: #ffffff1a;
-  padding: 0 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
 `;
 
 export const TextInputContainer = styled.div`
@@ -90,17 +93,16 @@ export const TextInputContainer = styled.div`
 
 export const StyledSearchImage = styled(Image)`
   font-size: 1rem;
-  color: #eff1f6bf;
 `;
 
 export const InputContainer = styled.input`
   border: none;
   outline: none;
   background-color: transparent;
-  padding-left: 0.5rem;
+  padding-left: 0.375rem;
   padding-right: 0.25rem;
-  color: rgb(138 138 138);
+  font-size: 0.85rem;
   &:placeholder {
-    color: rgb(138 138 138);
+    color: rgba(138 138 138, 0.7);
   }
 `;
