@@ -66,7 +66,7 @@ export const StyledSettingsImage = styled(Image)`
   display: flex;
   align-items: center;
   height: 1.8rem;
-  width: 1.2rem;
+  width: 1rem;
   box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0px 1px 3px #0000003d,
     0px 2px 8px #00000029;
   border-radius: 5px;
@@ -82,11 +82,25 @@ export const TextInputContainer = styled.div`
   padding: 0 0.75rem;
   height: 1.8rem;
   margin-right: 0.75rem;
+  display: flex;
+  align-items: center;
+  color: rgb(138 138 138);
+  font-size: 1rem;
 `;
 
 export const StyledSearchImage = styled(Image)`
   font-size: 1rem;
   color: #eff1f6bf;
-  display: flex;
-  align-items: center;
+`;
+
+export const InputContainer = styled.input`
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+  color: rgb(138 138 138);
+  &:placeholder {
+    color: rgb(138 138 138);
+  }
 `;

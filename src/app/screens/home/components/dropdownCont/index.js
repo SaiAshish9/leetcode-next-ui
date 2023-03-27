@@ -5,6 +5,7 @@ import {
   Container,
   Dropdown,
   DropdownContainer,
+  InputContainer,
   PickOneBubble,
   PickOneContainer,
   StyledSearchImage,
@@ -44,6 +45,7 @@ const DropdownCont = () => {
         ))}
         <TextInputContainer>
           <StyledSearchImage src={SearchIcon} alt="img" />
+          <InputContainer placeholder="Search questions" />
         </TextInputContainer>
         <StyledSettingsImage src={SettingsImg} alt="img" />
       </DropdownContainer>
