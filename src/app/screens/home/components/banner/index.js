@@ -2,7 +2,17 @@ import React from "react";
 import LC1 from "@/assets/lc.png";
 import LC2 from "@/assets/lc1.png";
 import LC3 from "@/assets/lc2.png";
-import { Container, Content, StyledImg, StyledSliderImage, StyledSliderText } from "./styles";
+import {
+  ArrowBox,
+  ArrowContainer,
+  Container,
+  Content,
+  StyledArrowImg,
+  StyledImg,
+  StyledSliderImage,
+  StyledSliderText,
+  TopSliderContainer,
+} from "./styles";
 
 import L1Img from "@/assets/l1.png";
 import L2Img from "@/assets/l2.png";
@@ -12,6 +22,9 @@ import L5Img from "@/assets/l5.png";
 import L6Img from "@/assets/l6.png";
 import L7Img from "@/assets/l7.png";
 import L8Img from "@/assets/l8.png";
+
+import ArrowLeftImg from "@/assets/left.svg";
+import ArrowRightImg from "@/assets/right.svg";
 
 const LImages = [
   {
@@ -41,11 +54,21 @@ const Banner = () => {
 
   return (
     <>
-      <Container>
-        {images.map((i, _) => (
-          <StyledImg key={i} src={i} alt="img" />
-        ))}
-      </Container>
+      <TopSliderContainer>
+        <Container>
+          {images.map((i, _) => (
+            <StyledImg key={i} src={i} alt="img" />
+          ))}
+        </Container>
+      </TopSliderContainer>
+      <ArrowContainer>
+        <ArrowBox>
+          <StyledArrowImg src={ArrowLeftImg} alt="img" />
+        </ArrowBox>
+        <ArrowBox>
+          <StyledArrowImg src={ArrowRightImg} alt="img" />
+        </ArrowBox>
+      </ArrowContainer>
       <Container>
         {LImages.map((i, _) => (
           <Content key={i.img}>

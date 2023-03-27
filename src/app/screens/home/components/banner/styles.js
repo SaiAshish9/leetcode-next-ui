@@ -11,7 +11,6 @@ export const StyledImg = styled(Image)`
 `;
 
 export const Container = styled.div`
-  padding-top: 2.7rem;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -32,11 +31,41 @@ export const StyledSliderText = styled.p`
   color: #fff;
   font-weight: 500;
   font-size: 0.8rem;
-  width: 90%;
-  margin: 0.5rem auto 0;
+  width: 100%;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0.4rem auto 0;
 `;
 
 export const Content = styled.div`
   text-align: center;
   width: 18%;
+`;
+
+export const ArrowBox = styled.div`
+  background-color: #ffffff12;
+  font-size: 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-left: 0.375rem;
+`;
+
+export const StyledArrowImg = styled(Image)`
+  width: 100%;
+  height: 100%;
+  margin: auto;
+`;
+
+export const ArrowContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+`;
+
+export const TopSliderContainer = styled.div`
+  padding-top: 2.7rem;
 `;

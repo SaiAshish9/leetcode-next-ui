@@ -47,13 +47,13 @@ const options = [
     text: "Contest",
   },
   {
-    text: "Design Patterns",
-  },
-  {
-    text: "SOLID",
-  },
-  {
     text: "Scale",
+  },
+  {
+    text: "Design Principles",
+  },
+  {
+    text: "Design Patterns",
   },
   {
     text: "System Design",
