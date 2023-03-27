@@ -5,7 +5,14 @@ import {
   TopLeftContainer,
   TopRightContainer,
 } from "./styles";
-import { Banner, DropdownCont, Options, SessionCard, Tags } from "./components";
+import {
+  Banner,
+  DropdownCont,
+  Options,
+  SessionCard,
+  Table,
+  Tags,
+} from "./components";
 
 const HomeScreen = () => {
   return (
@@ -16,6 +23,7 @@ const HomeScreen = () => {
           <Tags />
           <Options />
           <DropdownCont />
+          <Table />
         </TopLeftContainer>
         <TopRightContainer>
           <SessionCard />

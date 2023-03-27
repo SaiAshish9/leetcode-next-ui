@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 1.7rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
 `;
 
 export const DropdownContainer = styled.div`
