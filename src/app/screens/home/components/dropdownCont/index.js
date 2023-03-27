@@ -7,10 +7,15 @@ import {
   DropdownContainer,
   PickOneBubble,
   PickOneContainer,
+  StyledSearchImage,
+  StyledSettingsImage,
+  TextInputContainer,
 } from "./styles";
 
 import DropdownArrorDownImg from "@/assets/dropdown_arrow_down.svg";
 import PickImg from "@/assets/pick.svg";
+import SettingsImg from "@/assets/settingsIcon.svg";
+import SearchIcon from "@/assets/search.svg";
 
 const options = [
   {
@@ -37,6 +42,10 @@ const DropdownCont = () => {
             <ArrowDowmImage src={DropdownArrorDownImg} alt="img" />
           </Dropdown>
         ))}
+        <TextInputContainer>
+          <StyledSearchImage src={SearchIcon} alt="img" />
+        </TextInputContainer>
+        <StyledSettingsImage src={SettingsImg} alt="img" />
       </DropdownContainer>
       <PickOneContainer>
         <BubbleContainer>
