@@ -5,7 +5,7 @@ import {
   TopLeftContainer,
   TopRightContainer,
 } from "./styles";
-import { Banner, SessionCard, Tags } from "./components";
+import { Banner, Options, SessionCard, Tags } from "./components";
 
 const HomeScreen = () => {
   return (
@@ -14,6 +14,7 @@ const HomeScreen = () => {
         <TopLeftContainer>
           <Banner />
           <Tags />
+          <Options />
         </TopLeftContainer>
         <TopRightContainer>
           <SessionCard />
