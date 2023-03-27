@@ -9,9 +9,12 @@ export const Container = styled.div`
 export const Button = styled.div`
   color: rgb(38 38 38);
   background: #fff;
-  padding: 10px 1rem;
+  padding: 10.8px 1rem;
   font-size: 0.9rem;
   width: fit-content;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
   border-radius: 9999px;
   white-space: no-wrap;
   word-wrap: break-word;
@@ -29,4 +32,6 @@ export const Button = styled.div`
 
 export const StyledIcon = styled(Image)`
   margin-right: 0.5rem;
+  height: 18px;
+  width: 18px;
 `;

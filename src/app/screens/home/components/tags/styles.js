@@ -55,6 +55,7 @@ export const ExpandContainer = styled.div`
   background-color: rgb(26 26 26);
   height: 18px;
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   position: absolute;
