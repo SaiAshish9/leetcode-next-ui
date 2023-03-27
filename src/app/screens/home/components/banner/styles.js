@@ -18,3 +18,25 @@ export const Container = styled.div`
   padding-right: 0px;
   margin-right: 0px;
 `;
+
+export const StyledSliderImage = styled(Image)`
+  width: 100%;
+  height: fit-content;
+  border-radius: 13px;
+  cursor: pointer;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0px 1px 3px #0000003d,
+    0px 2px 8px #00000029;
+`;
+
+export const StyledSliderText = styled.p`
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.8rem;
+  width: 90%;
+  margin: 0.5rem auto 0;
+`;
+
+export const Content = styled.div`
+  text-align: center;
+  width: 18%;
+`;
