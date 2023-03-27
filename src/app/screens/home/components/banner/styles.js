@@ -69,3 +69,10 @@ export const ArrowContainer = styled.div`
 export const TopSliderContainer = styled.div`
   padding-top: 2.7rem;
 `;
+
+export const Border = styled.hr`
+  border-color: rgb(61 61 61);
+  border-top-width: 1px;
+  width: 100%;
+  margin-top: 1.8rem;
+`;

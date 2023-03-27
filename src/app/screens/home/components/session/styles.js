@@ -32,6 +32,13 @@ export const SessionText = styled.p`
   font-weight: 500;
 `;
 
+export const FeaturedContentText = styled.p`
+  color: #eff1f6bf;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+`;
+
 export const LevelText = styled.p`
   margin-right: 0.8rem;
   font-size: 0.8rem;
@@ -201,6 +208,7 @@ export const ShowMoreContent = styled.div`
   justify-content: center;
   margin: auto;
   cursor: pointer;
+  margin: 0.3rem 0;
 `;
 
 export const LockImage = styled(Image)`

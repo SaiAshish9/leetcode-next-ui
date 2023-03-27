@@ -12,6 +12,7 @@ import {
   StyledSliderImage,
   StyledSliderText,
   TopSliderContainer,
+  Border
 } from "./styles";
 
 import L1Img from "@/assets/l1.png";
@@ -77,6 +78,7 @@ const Banner = () => {
           </Content>
         ))}
       </Container>
+      <Border />
     </>
   );
 };

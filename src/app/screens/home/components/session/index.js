@@ -33,6 +33,7 @@ import {
   ShowMoreContent,
   LockImage,
   LockImageContainer,
+  FeaturedContentText,
 } from "./styles";
 import SettingsImg from "@/assets/settings.svg";
 import StudyPlanImg from "@/assets/lc_sts.svg";
@@ -118,7 +119,7 @@ const SessionCard = () => {
       </Card>
       <Card>
         <Content>
-          <SessionText>Featured Lists</SessionText>
+          <FeaturedContentText>Featured Lists</FeaturedContentText>
           <FeaturedContent>
             {assetInfo.map((i, _) => (
               <FeaturedContentItem key={i.text}>
