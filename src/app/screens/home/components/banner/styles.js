@@ -75,4 +75,5 @@ export const Border = styled.hr`
   border-top-width: 1px;
   width: 100%;
   margin-top: 1.8rem;
+  margin-bottom: 2.4rem;
 `;
