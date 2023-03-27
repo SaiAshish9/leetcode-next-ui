@@ -1,5 +1,16 @@
 import React from "react";
-import { Container, TagName } from "./styles";
+import {
+  ArrowImg,
+  Container,
+  ExpandContainer,
+  ExpandContainerText,
+  TagContainer,
+  TagCount,
+  TagName,
+  TagContent
+} from "./styles";
+
+import DoubleArrowDownImg from "@/assets/doubleArrowDown.svg";
 
 const Tags = () => {
   const tags = [
@@ -35,9 +46,18 @@ const Tags = () => {
 
   return (
     <Container>
-      {tags.map((i, _) => (
-        <TagName key={i.tag}>{i.tag}</TagName>
-      ))}
+      <TagContent>
+        {tags.map((i, _) => (
+          <TagContainer key={i.tag}>
+            <TagName>{i.tag}</TagName>
+            <TagCount>{i.count}</TagCount>
+          </TagContainer>
+        ))}
+      </TagContent>
+      <ExpandContainer>
+        <ExpandContainerText>Expand</ExpandContainerText>
+        <ArrowImg src={DoubleArrowDownImg} alt="img" />
+      </ExpandContainer>
     </Container>
   );
 };
