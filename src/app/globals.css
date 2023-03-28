@@ -22,3 +22,10 @@ a {
 @media (prefers-color-scheme: dark) {
 
 }
+
+.CircularProgressbar-path {
+  stroke-width: 3px;
+}
+.CircularProgressbar-trail {
+  stroke-width: 3px;
+}

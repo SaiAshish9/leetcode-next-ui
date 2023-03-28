@@ -16,6 +16,8 @@ import {
   Fab,
 } from "./components";
 
+import "react-circular-progressbar/dist/styles.css";
+
 const HomeScreen = () => {
   return (
     <HomeComponent>

@@ -34,6 +34,11 @@ import {
   LockImage,
   LockImageContainer,
   FeaturedContentText,
+  ProgressCont,
+  AllText,
+  TotalScoreText,
+  SessionScoreText,
+  Divider
 } from "./styles";
 import SettingsImg from "@/assets/settings.svg";
 import StudyPlanImg from "@/assets/lc_sts.svg";
@@ -44,6 +49,51 @@ import LockSvg from "@/assets/lock.svg";
 import AssetImg1 from "@/assets/asset1.png";
 import AssetImg2 from "@/assets/asset2.png";
 import AssetImg3 from "@/assets/asset3.png";
+
+import {
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
+
+const CircleContainer = () => {
+  return (
+    <CircularProgressbarWithChildren
+      value={100}
+      styles={buildStyles({
+        trailColor: "rgb(74 74 74)",
+        pathColor: "rgb(255 55 95)",
+        strokeLinecap: "butt",
+        strokeWidth: 3,
+      })}
+    >
+      <CircularProgressbarWithChildren
+        value={76}
+        styles={buildStyles({
+          pathColor: "rgb(255 192 30)",
+          trailColor: "transparent",
+          strokeLinecap: "butt",
+        })}
+      >
+        <CircularProgressbarWithChildren
+          value={22}
+          styles={buildStyles({
+            pathColor: "rgb(0 184 163)",
+            trailColor: "transparent",
+            strokeLinecap: "butt",
+            strokeWidth: "3px",
+          })}
+        >
+          <ProgressCont>
+            <AllText>All</AllText>
+            <TotalScoreText>2603</TotalScoreText>
+            <Divider />
+            <SessionScoreText>2603</SessionScoreText>
+          </ProgressCont>
+        </CircularProgressbarWithChildren>
+      </CircularProgressbarWithChildren>
+    </CircularProgressbarWithChildren>
+  );
+};
 
 const SessionCard = () => {
   const assetInfo = [
@@ -76,7 +126,9 @@ const SessionCard = () => {
             </AnonymousRow>
           </SessionTopContainer>
           <StatsContainer>
-            <Circle />
+            <Circle>
+              <CircleContainer />
+            </Circle>
             <StatsContent>
               <TextContainer>
                 <LevelText easy>Easy</LevelText>

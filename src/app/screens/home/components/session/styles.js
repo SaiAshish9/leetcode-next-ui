@@ -70,7 +70,7 @@ export const TotalText = styled.span`
 export const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.1rem;
   align-items: center;
 `;
 
@@ -79,8 +79,6 @@ export const ScoreTextContainer = styled.p``;
 export const Circle = styled.div`
   width: 81px;
   height: 81px;
-  border: 3px solid rgb(74 74 74);
-  border-radius: 50%;
   cursor: pointer;
 `;
 
@@ -89,6 +87,7 @@ export const StatsContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
+  // padding: 0 0.2rem;
 `;
 
 export const StatsContent = styled.div``;
@@ -226,4 +225,35 @@ export const LockImageContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+`;
+
+export const ProgressCont = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center;
+`;
+
+export const AllText = styled.p`
+  font-size: 10px;
+  color: #eff2f699;
+`;
+
+export const TotalScoreText = styled.p`
+  font-size: 1rem;
+  color: #fff;
+  margin-top: -2px;
+  font-weight: 500;
+`;
+
+export const SessionScoreText = styled.p`
+  font-size: 0.7rem;
+  color: #ebebf54d;
+  font-weight: 600;
+`;
+
+export const Divider = styled.div`
+  width: 2rem;
+  border-top: 1px solid #f7faff2e;
 `;
