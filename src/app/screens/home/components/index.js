@@ -4,5 +4,6 @@ import Tags from "./tags";
 import Options from "./options";
 import DropdownCont from "./dropdownCont";
 import Table from "./table";
+import Calendar from "./calendar";
 
-export { Banner, SessionCard, Tags, Options, DropdownCont, Table };
+export { Banner, SessionCard, Tags, Options, DropdownCont, Table, Calendar };

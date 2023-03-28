@@ -12,6 +12,7 @@ import {
   SessionCard,
   Table,
   Tags,
+  Calendar,
 } from "./components";
 
 const HomeScreen = () => {
@@ -27,6 +28,7 @@ const HomeScreen = () => {
         </TopLeftContainer>
         <TopRightContainer>
           <SessionCard />
+          <Calendar />
         </TopRightContainer>
       </Content>
     </HomeComponent>

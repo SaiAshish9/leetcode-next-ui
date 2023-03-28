@@ -36,7 +36,7 @@ export const FeaturedContentText = styled.p`
   color: #eff1f6bf;
   font-size: 0.8rem;
   font-weight: 500;
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
 `;
 
 export const LevelText = styled.p`
