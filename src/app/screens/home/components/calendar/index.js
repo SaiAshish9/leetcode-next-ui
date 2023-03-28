@@ -12,10 +12,22 @@ import {
   TimelineText,
   LabelTextContainer,
   Dot,
+  WeeklyCard,
+  CalendarFoot,
+  LabelValue,
+  RedeemV,
+  RedeemCont,
+  RedeemContText,
+  StyledArrowLeftImg,
+  StyledArrowRightImg
 } from "./styles";
 
 import CalendarImg from "@/assets/calendar.png";
 import CalendarSvgImg from "@/assets/calendar.svg";
+import RedeemImg from "@/assets/redeem.png";
+
+import CalendarMarginLeftSvg from "@/assets/calendarMarginLeft.svg";
+import CalendarMarginRightSvg from "@/assets/calendarMarginRight.svg";
 
 const Calender = () => {
   const weekTags = ["S", "M", "T", "W", "T", "F", "S"];
@@ -29,6 +41,8 @@ const Calender = () => {
         <CalendarCont>
           <StyledDayText>Day 28</StyledDayText>
           <TimelineText>07:10:55 left</TimelineText>
+          <StyledArrowLeftImg src={CalendarMarginLeftSvg} alt="img" />
+          <StyledArrowRightImg src={CalendarMarginRightSvg} alt="img" />
         </CalendarCont>
         <StyledImage src={CalendarSvgImg} alt="img" />
         <StyledImage img src={CalendarImg} alt="img" />
@@ -39,12 +53,21 @@ const Calender = () => {
         </TagsCont>
         <LabelsCont>
           {keys.map((date, k) => (
-            <LabelTextContainer key={date}>
-              <LabelText>{date}</LabelText>
-              {k > 2 && k < 34 && <Dot />}
+            <LabelTextContainer highlighted={date == 28} key={date}>
+              <LabelText highlighted={date == 28}>{date}</LabelText>
+              {k > 2 && k < 30 && <Dot />}
             </LabelTextContainer>
           ))}
         </LabelsCont>
+        <WeeklyCard />
+        <CalendarFoot>
+          <RedeemCont>
+            <RedeemV src={RedeemImg} alt="img" />
+            <RedeemContText>0</RedeemContText>
+            <LabelValue tag>Redeem</LabelValue>
+          </RedeemCont>
+          <LabelValue>Rules</LabelValue>
+        </CalendarFoot>
       </Card>
     </Container>
   );
