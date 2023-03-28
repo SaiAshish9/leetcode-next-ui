@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Table } from "antd";
+import styled, { css } from "styled-components";
+import { Table, Image } from "antd";
 
 export const Container = styled.div`
   background-color: red;
@@ -9,9 +9,17 @@ export const Container = styled.div`
 `;
 
 export const StyledTableContainer = styled(Table)`
+  tr {
+    color: #fff;
+    font-size: 0.8rem;
+    cursor: pointer;
+    &:hover {
+      color: rgb(10 132 255);
+    }
+  }
+
   tr:nth-child(even) {
     background: rgb(40 40 40);
-    color: #fff;
     border-bottom: none;
     cursor: pointer;
     td {
@@ -21,7 +29,6 @@ export const StyledTableContainer = styled(Table)`
 
   tr:nth-child(odd) {
     background: rgb(26 26 26);
-    color: #fff;
     border-bottom: none;
     cursor: pointer;
     td {
@@ -52,15 +59,27 @@ export const StyledTableContainer = styled(Table)`
   }
 
   .anticon {
-    color: #eff1f6bf;
+    color: #eff2f699;
     font-size: 0.6rem;
+  }
+
+  .ant-table-tbody {
+    padding: 11px 8px !important;
+  }
+  .ant-table-tbody > tr > td {
+    padding: 11px 8px !important;
+  }
+
+  th {
+    padding: 11px 8px !important;
   }
 
   .ant-table-thead {
     .ant-table-cell {
       background: rgb(26 26 26) !important;
-      color: #eff1f6bf;
+      color: #eff2f699;
       font-weight: 400;
+      border-bottom: 1px solid rgb(61 61 61);
     }
     th {
       border-start-start-radius: 0px !important;
@@ -74,4 +93,47 @@ export const StyledTableContainer = styled(Table)`
     }
   }
   margin-bottom: 3rem;
+`;
+
+export const StyledStatusIcon = styled(Image)`
+  width: 13.5px;
+  height: 13.5px;
+`;
+
+export const DifficultyTag = styled.p`
+  font-size: 0.8rem;
+  ${({ easy, medium }) =>
+    easy
+      ? css`
+          color: rgb(0 184 163);
+        `
+      : medium
+      ? css`
+          color: rgb(255 192 30);
+        `
+      : css`
+          color: rgb(255 55 95);
+        `}
+`;
+
+export const SpanCont = styled.div`
+  background: #ffffff1a;
+  height: 0.5rem;
+  width: calc(50% - 0.625rem);
+  ${({ right }) =>
+    !right
+      ? css`
+          border-bottom-left-radius: 0.5rem;
+          border-top-left-radius: 0.5rem;
+        `
+      : css`
+          border-bottom-right-radius: 0.5rem;
+          border-top-right-radius: 0.5rem;
+        `}
+`;
+
+export const FrequencyCont = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
