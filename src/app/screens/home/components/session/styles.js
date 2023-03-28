@@ -98,6 +98,7 @@ export const AnonymousButton = styled.div`
   background-color: #ffffff1a;
   padding: 0.375rem;
   font-size: 12px;
+  height: 1.8rem;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   width: 5rem;
@@ -107,10 +108,14 @@ export const AnonymousButton = styled.div`
 export const AnonymousSettingsButton = styled.div`
   color: #eff2f699;
   background-color: #ffffff1a;
-  padding: 0.375rem;
+  padding: 0 0.375rem;
+  height: 1.8rem;
   font-size: 12px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const AnonymousRow = styled.div`
@@ -119,8 +124,8 @@ export const AnonymousRow = styled.div`
 `;
 
 export const StyledImg = styled(Image)`
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   position: relative;
   top: 1px;
 `;
