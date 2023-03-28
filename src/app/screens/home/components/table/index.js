@@ -2,26 +2,27 @@ import { Space, Tag } from "antd";
 import { StyledTableContainer } from "./styles";
 const columns = [
   {
-    title: "Name",
+    title: "Status",
     dataIndex: "name",
     key: "name",
     render: (text) => <a>{text}</a>,
   },
   {
-    title: "Age",
+    title: "Title",
     dataIndex: "age",
     key: "age",
     sorter: (a, b) => a.age - b.age,
   },
   {
-    title: "Address",
+    title: "Solution",
     dataIndex: "address",
     key: "address",
   },
   {
-    title: "Tags",
+    title: "Acceptance",
     key: "tags",
     dataIndex: "tags",
+    sorter: (a, b) => a.age - b.age,
     render: (_, { tags }) => (
       <>
         {tags.map((tag) => {
@@ -39,14 +40,20 @@ const columns = [
     ),
   },
   {
-    title: "Action",
+    title: "Difficulty",
     key: "action",
+    sorter: (a, b) => a.age - b.age,
     render: (_, record) => (
       <Space size="middle">
         <a>Invite {record.name}</a>
         <a>Delete</a>
       </Space>
     ),
+  },
+  {
+    title: "Frequency",
+    dataIndex: "address",
+    key: "address",
   },
 ];
 const data = [
