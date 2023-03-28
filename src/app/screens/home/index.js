@@ -13,6 +13,7 @@ import {
   Table,
   Tags,
   Calendar,
+  Fab,
 } from "./components";
 
 const HomeScreen = () => {
@@ -31,6 +32,7 @@ const HomeScreen = () => {
           <Calendar />
         </TopRightContainer>
       </Content>
+      <Fab />
     </HomeComponent>
   );
 };
