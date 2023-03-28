@@ -25,8 +25,12 @@ export const StyledTableContainer = styled(Table)`
     }
   }
 
-  .ant-table-cell-row-hover:nth-child { 
-    background: inherit !important;
+  .ant-table-cell-row-hover:nth-child(even){ 
+    background: rgb(40 40 40) !important;
+  }
+
+  .ant-table-cell-row-hover:nth-child(odd) {
+    background: rgb(26 26 26) !important;
   }
 
   tr:nth-child(odd) {
