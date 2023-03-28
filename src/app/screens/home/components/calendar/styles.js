@@ -16,8 +16,37 @@ export const Card = styled.div`
   padding: 1rem 0.8rem;
 `;
 
-export const StyledImage = styled(Image)`
+export const StyledImageContainer = styled.div`
+  height: 70px;
   position: absolute;
+  right: 1rem;
+  top: -2rem;
+`;
+
+export const StyledImageContent = styled.div`
+  position: relative;
+  height: 100%;
+`;
+
+export const StyledImage = styled(Image)`
+  height: 100%;
+  width: fit-content;
+  &:hover {
+    opacity: 1;
+  }
+  cursor: pointer;
+`;
+
+export const StyledImage1 = styled(Image)`
+  height: 100%;
+  position: relative;
+  bottom: 100%;
+  width: fit-content;
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+  }
+  cursor: pointer;
 `;
 
 export const StyledDayText = styled.p`
