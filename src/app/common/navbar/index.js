@@ -1,4 +1,9 @@
-import React from "react";
+"use client";
+
+import { useEffect } from "react";
+
+import { useRouter, usePathname } from "next/navigation";
+
 import {
   NavContainer,
   NavContent,
@@ -42,25 +47,42 @@ const options1 = [
 const options = [
   {
     text: "Problems",
+    route: "/",
   },
   {
     text: "Contest",
+    route: "/contest",
   },
   {
     text: "Scale",
+    route: "/scale",
   },
   {
     text: "Design Principles",
+    route: "design_principles",
   },
   {
     text: "Design Patterns",
+    route: "/design_patterns",
   },
   {
     text: "System Design",
+    route: "/system_design",
   },
 ];
 
 const Navbar = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleClick = (e, route) => {
+    e.preventDefault();
+    router.push(route);
+    console.log(pathname);
+  };
+
+  useEffect(() => {}, [pathname]);
+
   return (
     <NavContainer>
       <NavContent>
@@ -73,7 +95,12 @@ const Navbar = () => {
           />
           <OptionsContainer>
             {options.map((i, _) => (
-              <NavItem key={i.text} text={i.text}>
+              <NavItem
+                key={i.text}
+                route={i.route == pathname}
+                text={i.text}
+                onClick={(e) => handleClick(e, i.route)}
+              >
                 {i.text}
               </NavItem>
             ))}

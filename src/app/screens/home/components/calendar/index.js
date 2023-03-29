@@ -45,15 +45,15 @@ const Calender = () => {
           <StyledArrowRightImg src={CalendarMarginRightSvg} alt="img" />
         </CalendarCont>
         <StyledImage src={CalendarSvgImg} alt="img" />
-        <StyledImage img src={CalendarImg} alt="img" />
+        <StyledImage img="true" src={CalendarImg} alt="img" />
         <TagsCont>
-          {weekTags.map((tag, _) => (
-            <TagText key={tag}>{tag}</TagText>
+          {weekTags.map((tag, k) => (
+            <TagText key={k}>{tag}</TagText>
           ))}
         </TagsCont>
         <LabelsCont>
           {keys.map((date, k) => (
-            <LabelTextContainer highlighted={date == 28} key={date}>
+            <LabelTextContainer highlighted={date == 28} key={k}>
               <LabelText highlighted={date == 28}>{date}</LabelText>
               {k > 2 && k < 30 && <Dot />}
             </LabelTextContainer>

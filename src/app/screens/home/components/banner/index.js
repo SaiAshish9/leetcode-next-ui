@@ -57,8 +57,8 @@ const Banner = () => {
     <>
       <TopSliderContainer>
         <Container>
-          {images.map((i, _) => (
-            <StyledImg key={i} src={i} alt="img" />
+          {images.map((i, k) => (
+            <StyledImg key={k} src={i} alt="img" />
           ))}
         </Container>
       </TopSliderContainer>
@@ -72,7 +72,7 @@ const Banner = () => {
       </ArrowContainer>
       <Container>
         {LImages.map((i, _) => (
-          <Content key={i.img}>
+          <Content key={i.text}>
             <StyledSliderImage src={i.img} alt="img" />
             <StyledSliderText>{i.text}</StyledSliderText>
           </Content>

@@ -15,6 +15,7 @@ export const NavContainer = styled.div`
   padding: 0px;
 `;
 
+// max-width: 79vw;
 export const NavContent = styled.div`
   width: 100%;
   max-width: 72vw;
@@ -46,7 +47,7 @@ export const NavItem = styled.p`
   :hover {
     color: rgba(255, 255, 255);
   }
-  ${({ text }) =>
+  ${({ text, route }) =>
     text == "System Design"
       ? css`
           color: rgb(255 161 22);
@@ -54,7 +55,7 @@ export const NavItem = styled.p`
             color: rgb(255 161 22);
           }
         `
-      : text == "Problems"
+      : route
       ? css`
           border-bottom: 2.4px solid #fff;
         `

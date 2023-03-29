@@ -7,12 +7,14 @@ export const HomeComponent = styled.div`
   color: #fff;
 `;
 
+// padding: 0 10vw;
+// padding-right: 10vw;
 export const Content = styled.div`
-  padding: 0 10vw;
+  padding: 0 15vw;
   padding-top: 1.5rem;
   display: flex;
   justify-content: space-between;
-  padding-right: 10vw;
+  padding-right: 15.5vw;
 `;
 
 export const TopLeftContainer = styled.div`
