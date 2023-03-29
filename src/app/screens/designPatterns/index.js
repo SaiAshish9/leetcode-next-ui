@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import { Container } from "./styles";
 
 const DesignPatterns = () => {
-  return (
-    <div>DesignPatterns</div>
-  )
-}
+  return <Container>DesignPatterns</Container>;
+};
 
-export default DesignPatterns
+export default DesignPatterns;
