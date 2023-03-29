@@ -59,7 +59,7 @@ const options = [
   },
   {
     text: "Design Principles",
-    route: "design_principles",
+    route: "/design_principles",
   },
   {
     text: "Design Patterns",
@@ -78,7 +78,6 @@ const Navbar = () => {
   const handleClick = (e, route) => {
     e.preventDefault();
     router.push(route);
-    console.log(pathname);
   };
 
   useEffect(() => {}, [pathname]);

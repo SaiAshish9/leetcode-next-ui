@@ -1,4 +1,4 @@
 import HomeScreen from "./home";
-import DesignPatterns from "./designPatterns";
+import DesignPrinciples from "./designPrinciples";
 
-export { HomeScreen, DesignPatterns };
+export { HomeScreen, DesignPrinciples };

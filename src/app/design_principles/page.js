@@ -1,9 +1,10 @@
-import React from 'react'
+"use client";
+
+import { DesignPrinciples } from "@/screens";
+import React from "react";
 
 const Page = () => {
-  return (
-    <div>Page</div>
-  )
-}
+  return <DesignPrinciples />;
+};
 
-export default Page
+export default Page;

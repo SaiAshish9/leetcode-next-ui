@@ -3,8 +3,8 @@
 import "antd/dist/reset.css";
 import "@/main.css";
 import "@/globals.css";
-import { Navbar } from "./common";
 import { HomeScreen } from "./screens";
+import { Navbar } from "./common";
 
 function HomeScreenContainer() {
   
