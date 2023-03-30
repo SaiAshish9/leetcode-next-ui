@@ -21,26 +21,27 @@ const textContent = [
     ),
   },
   {
-    text: <></>,
+    text: (
+      <>
+        SOLID is a structured design approach that ensures your software is
+        modular and easy to maintain, understand, debug, and refactor. Following
+        SOLID also helps save time and effort in both development and
+        maintenance. SOLID prevents your code from becoming rigid and fragile,
+        which helps you build long-lasting software.
+      </>
+    ),
   },
   {
     text: (
       <>
+        <Text>Single Responsibility</Text>
+        <Text>A class should have only one and only one reason to change.</Text>
+        <Text>Open/Closed</Text>
         <Text>
-          Single Responsibility
+          Software entities should be open for extension but closed for
+          modification.
         </Text>
-        <Text>
-          A class should have only one and only one reason to change.
-        </Text>
-        <Text>
-          Open/Closed 
-        </Text>
-        <Text>
-          Software entities should be open for extension but closed for modification.
-        </Text>
-        <Text>
-            
-        </Text>
+        <Text></Text>
       </>
     ),
   },
