@@ -30,7 +30,16 @@ const textContent = [
           Single Responsibility
         </Text>
         <Text>
-            A class should have only one and only one reason to change.
+          A class should have only one and only one reason to change.
+        </Text>
+        <Text>
+          Open/Closed 
+        </Text>
+        <Text>
+          Software entities should be open for extension but closed for modification.
+        </Text>
+        <Text>
+            
         </Text>
       </>
     ),
