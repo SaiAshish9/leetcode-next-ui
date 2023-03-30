@@ -6,6 +6,10 @@ const textContent = [
     text: (
       <>
         <Text>
+          SOLID principles are object-oriented design concepts relevant to
+          software development.
+        </Text>
+        <Text>
           Principles are best practices to follow to allow scalable architecture
           and software craftmanship.
         </Text>
