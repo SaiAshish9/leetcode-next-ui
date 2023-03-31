@@ -1,7 +1,8 @@
 import React from "react";
 import { StyledMonacoEditor } from "./styles";
+import Formatter from "auto-format";
 
-const Editor = () => {
+const Editor = ({ value, height }) => {
   const options = {
     readOnly: true,
     minimap: { enabled: false },
@@ -26,14 +27,10 @@ const Editor = () => {
   return (
     <StyledMonacoEditor
       theme="vs-dark"
-      height="18rem"
+      height={height ?? "18rem"}
       defaultLanguage="java"
       options={options}
-      value={`public class Task {
-  public void downloadFile(String location);
-  public void parseTheFile(File file);
-  public void persistTheData(Data data);
-}`}
+      value={value}
     />
   );
 };

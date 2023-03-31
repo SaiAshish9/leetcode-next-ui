@@ -744,6 +744,11 @@ async-validator@^4.1.0:
   resolved "https://registry.yarnpkg.com/async-validator/-/async-validator-4.2.5.tgz#c96ea3332a521699d0afaaceed510a54656c6339"
   integrity sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg==
 
+auto-format@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/auto-format/-/auto-format-1.1.1.tgz#f00dec4c4fd5aff67f0e307be88c54d4c8ed8282"
+  integrity sha512-2aRqlYuyBG1xDSBpY04h86zT4IBO0NOnVInaOpanGF2JZTXR8DQm1SJjfAJF9tlwYWbTjCNgLbPLeHEDg7FuTw==
+
 available-typed-arrays@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"

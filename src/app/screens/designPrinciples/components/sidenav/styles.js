@@ -2,8 +2,9 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 17vw;
-  height: 100%;
+  height: calc(100% - 50px);
   border-right: 1px solid rgb(61 61 61);
+  position: absolute;
 `;
 
 export const Option = styled.p`
