@@ -1,4 +1,8 @@
 import styled from "styled-components";
 import Editor from "@monaco-editor/react";
 
-export const StyledMonacoEditor = styled(Editor)``;
+export const StyledMonacoEditor = styled(Editor)`
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+`;

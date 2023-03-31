@@ -1,3 +1,4 @@
+import { Editor } from "@/common";
 import React from "react";
 import { Container, Text } from "./styles";
 
@@ -45,7 +46,9 @@ const textContent = [
           Software entities should be open for extension but closed for
           modification.
         </Text>
-        <Text></Text>
+        <Editor
+          defaultValue="// some comment"
+        />
       </>
     ),
   },
