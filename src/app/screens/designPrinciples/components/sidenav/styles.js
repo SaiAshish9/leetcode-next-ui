@@ -11,6 +11,7 @@ export const Option = styled.p`
   font-size: 0.9rem;
   padding: 1.8rem 1.2rem;
   border-bottom: 1px solid rgb(61 61 61);
+  border-left: 4px solid transparent;
   cursor: pointer;
   ${({ selected }) =>
     selected &&

@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Option, Text } from "./styles";
+import React, { useState } from "react";
+import { Container, Option } from "./styles";
 
 const options = [
   "Design Principles",
@@ -12,11 +12,21 @@ const options = [
   "Dependency Inversion",
 ];
 
-const SideNav = () => {
+const SideNav = ({ selectedOption, setSelectedOption }) => {
+  function handleClick(e, option) {
+    e.preventDefault();
+    e.stopPropagation();
+    setSelectedOption(option);
+  }
+
   return (
     <Container>
       {options.map((i, k) => (
-        <Option key={i} selected={k == 2}>
+        <Option
+          onClick={(e) => handleClick(e, k)}
+          key={i}
+          selected={k == selectedOption}
+        >
           {i}
         </Option>
       ))}

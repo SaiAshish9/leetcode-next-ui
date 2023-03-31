@@ -37,25 +37,41 @@ const textContent = [
     ),
   },
   {
+    text: <></>,
+  },
+  {
     text: (
       <>
         <Text>Single Responsibility</Text>
         <Text>A class should have only one and only one reason to change.</Text>
+        <Editor defaultValue="// some comment" />
+      </>
+    ),
+  },
+  {
+    text: (
+      <>
         <Text>Open/Closed</Text>
         <Text>
           Software entities should be open for extension but closed for
           modification.
         </Text>
-        <Editor
-          defaultValue="// some comment"
-        />
       </>
     ),
   },
+  {
+    text: <></>,
+  },
+  {
+    text: <></>,
+  },
+  {
+    text: <></>,
+  },
 ];
 
-const Content = () => {
-  return <Container>{textContent[2].text}</Container>;
+const Content = ({ selectedOption }) => {
+  return <Container>{textContent[selectedOption].text}</Container>;
 };
 
 export default Content;
