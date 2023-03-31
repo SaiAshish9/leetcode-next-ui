@@ -28,11 +28,13 @@ const textContent = [
   {
     text: (
       <>
-        SOLID is a structured design approach that ensures your software is
-        modular and easy to maintain, understand, debug, and refactor. Following
-        SOLID also helps save time and effort in both development and
-        maintenance. SOLID prevents your code from becoming rigid and fragile,
-        which helps you build long-lasting software.
+        <Text>
+          SOLID is a structured design approach that ensures your software is
+          modular and easy to maintain, understand, debug, and refactor.
+          Following SOLID also helps save time and effort in both development
+          and maintenance. SOLID prevents your code from becoming rigid and
+          fragile, which helps you build long-lasting software.
+        </Text>
       </>
     ),
   },
@@ -133,14 +135,110 @@ const textContent = [
       <>
         <Text m>Open/Closed</Text>
         <Text>
-          Software entities should be open for extension but closed for
-          modification.
+          Software entities (e.g., classes, modules, functions) should be open
+          for an extension, but closed for modification.
+        </Text>
+        <Text>Example 1:</Text>
+        <Text>Consider the below method of the class VehicleCalculations:</Text>
+        <Editor
+          height={"11.5rem"}
+          value={`public class VehicleCalculations {
+   public double calculateValue(Vehicle v) {
+       if (v instanceof Car) {
+          return v.getValue() * 0.8;
+       if (v instanceof Bike) {
+          return v.getValue() * 0.5;
+   }
+}`}
+        />
+        <Text>
+          Suppose we now want to add another subclass called Truck. We would
+          have to modify the above class by adding another if statement, which
+          goes against the Open-Closed Principle.
+        </Text>
+        <Text>
+          A better approach would be for the subclasses Car and Truck to
+          override the calculateValue method:
+        </Text>
+        <Editor
+          height={"15.5rem"}
+          value={`public class Vehicle {
+   public double calculateValue() {...}
+  }
+   public class Car extends Vehicle {
+      public double calculateValue() {
+        return this.getValue() * 0.8;
+   }}
+   public class Truck extends Vehicle{
+      public double calculateValue() {
+        return this.getValue() * 0.9;
+}}`}
+        />
+        <Text>
+          Adding another Vehicle type is as simple as making another subclass
+          and extending from the Vehicle class.
+        </Text>
+        <Text>Example 2:</Text>
+        <Editor
+          height={"17.5rem"}
+          value={`public double Area(object[] shapes){
+ double area = 0;
+ foreach(var shape in shapes){
+ if(shape is Rectangle){
+    Rectangle rectangle = (Rectangle) shape;
+      area += rectangle.Width * rectangle.Height;
+    }else{
+      Circle circle = (Circle) shape;
+      area += circle.Radius * circle.Radius * Math.PI;
+    }
+ }
+ return area;
+}`}
+        />
+        <Text>
+          What if we need to add few more shapes? We need to modify all the code
+          present. It could also be a interface.
+        </Text>
+        <Editor
+          height={"19rem"}
+          value={`public abstract class Shape {
+ public abstract double Area();
+}
+
+public class Rectangle : Shape {
+ public double Width { get; set; };
+ public double Height { get; set; };
+ public override double Area() { return Width * Height; }
+}
+
+public class Circle : Shape {
+ public double Radius { get; set; };
+ public override double Area() { return Radius * Radius * Math.PI; }
+}
+
+public double Area(Shape[] shapes){
+ double area = 0;
+ foreach(var shape in shapes){
+   area += shape.Area();
+ }
+ return area;
+}`}
+        />
+        <Text>
+          Area method only has the logic to loop around the shapes and add the
+          areas of them. This Area method is closed for modification now, but we
+          are open for extension because whenever we want to create a new shape
+          we can add here.
         </Text>
       </>
     ),
   },
   {
-    text: <></>,
+    text: (
+      <>
+        <Text></Text>
+      </>
+    ),
   },
   {
     text: <></>,
