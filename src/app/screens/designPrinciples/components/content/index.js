@@ -186,7 +186,7 @@ const textContent = [
  foreach(var shape in shapes){
  if(shape is Rectangle){
     Rectangle rectangle = (Rectangle) shape;
-      area += rectangle.Width * rectangle.Height;
+    area += rectangle.Width * rectangle.Height;
     }else{
       Circle circle = (Circle) shape;
       area += circle.Radius * circle.Radius * Math.PI;
@@ -236,15 +236,147 @@ public double Area(Shape[] shapes){
   {
     text: (
       <>
-        <Text></Text>
+        <Text m>Liskov substitution principle</Text>
+        <Text>
+          The Liskov Substitution Principle (LSP) applies to inheritance
+          hierarchies such that <br />
+          derived classes must be completely substitutable for their base
+          classes.
+        </Text>
+        <Text>Subtypes must be substitutable for their base types.</Text>
+        <Text>Example 1:</Text>
+        <Editor
+          height={"22rem"}
+          value={`public class Rectangle {
+ private double height;
+ private double width;
+ public void setHeight(double h) { height = h; }
+ public void setWidth(double w) { width = w; }
+ ...
+}
+public class Square extends Rectangle {
+ public void setHeight(double h) {
+ super.setHeight(h);
+ super.setWidth(h);
+}
+public void setWidth(double w) {
+ super.setHeight(w);
+ super.setWidth(w);
+}
+}`}
+        />
+        <Text>
+          The above classes do not obey LSP because you cannot replace the
+          Rectangle base class with its derived class Square. <br />
+          The Square class has extra constraints, i.e., the height and width
+          must be the same.
+          <br />
+          Therefore, substituting Rectangle with Square class may result in
+          unexpected behavior.
+        </Text>
+        <Text>Example 2:</Text>
+        <Editor
+          height={"26.5rem"}
+          value={`class Rectangle {
+ void setWidth(double w)
+ void setHeight(double h)
+ double getWidth()
+ double getHeight()
+}
+       
+class Square {
+ void setWidth(double w)
+ void setHeight(double h)
+ double getWidth()
+ double getHeight()
+}
+       
+// LSP says its a bad implementation 
+       
+void test(Rectangle r){
+ r.setWidth(5);
+ r.setHeight(4);
+ assertEquals(5 * 4, r.getWidth() * r.getHeight());
+}`}
+        />
+        <Text>
+          Square won't pass here as width and height will be the same.
+        </Text>
+        <Text>
+          Inheritance should only be used when super class is replacable by sub
+          class. It shouldn't be used just to save a few lines of code.
+        </Text>
       </>
     ),
   },
   {
-    text: <></>,
+    text: (
+      <>
+        <Text>Interface Segregation Principle ISP</Text>
+        <Text>
+          No client should be forced to depend on methods that it does not use.
+        </Text>
+        <Text>
+          The dependency of one class to another one should depend on the
+          smallest possible interface.
+        </Text>
+        <Text>
+          Clients should not be forced to implement interfaces they don't use.
+        </Text>
+        <Text>
+          Instead of one fat interface many small interfaces are preferred based
+          on groups of methods, each one serving one submodule.
+        </Text>
+        <Text>
+          The Interface Segregation Principle (ISP) states that clients should
+          not be forced to depend upon interface members they do not use.
+        </Text>
+        <Text>
+          In other words, do not force any client to implement an interface that
+          is irrelevant to them.
+        </Text>
+        <Text>Example 1:</Text>
+        <Text>Suppose there’s an interface for vehicle and a Bike class:</Text>
+        <Editor
+          height={"21rem"}
+          value={`public interface Vehicle {
+ public void drive();
+ public void stop();
+ public void refuel();
+ public void openDoors();
+}
+
+public class Bike implements Vehicle {
+      
+ // Can be implemented
+ public void drive() {...}
+ public void stop() {...}
+ public void refuel() {...}
+          
+ // Can not be implemented
+ public void openDoors() {...}
+}`}
+        />
+        <Text>
+          As you can see, it does not make sense for a Bike class to implement
+          the openDoors() method as a bike does not have any doors!
+        </Text>
+        <Text>
+          To fix this, ISP proposes that the interfaces be broken down into
+          multiple, small cohesive interfaces so that no class is forced to
+          implement any interface,
+        </Text>
+        <Text>and therefore methods, that it does not need.</Text>
+        <Text>Example 2:</Text>
+      </>
+    ),
   },
   {
-    text: <></>,
+    text: (
+      <>
+        <Text></Text>
+      </>
+    ),
   },
 ];
 
