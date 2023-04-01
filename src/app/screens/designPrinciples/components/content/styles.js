@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
@@ -20,4 +21,10 @@ export const Text = styled.p`
       font-size: 17px;
       margin-bottom: 1.5rem;
     `};
+`;
+
+export const StyledImg = styled(Image)`
+  width: fit-content;
+  height: 18rem;
+  margin-bottom: 1rem;
 `;

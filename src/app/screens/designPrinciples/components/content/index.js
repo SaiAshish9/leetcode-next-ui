@@ -1,8 +1,147 @@
 import { Editor } from "@/common";
 import React from "react";
-import { Container, Text } from "./styles";
+import { Container, StyledImg, Text } from "./styles";
+import SolidImg from "@/assets/solid.png";
 
 const textContent = [
+  {
+    text: (
+      <>
+        <Text>
+          In Java, the design principles are the set of advice used as rules in
+          design making.
+        </Text>
+        <Text>
+          The only difference between the design principle and design pattern is
+          that the design principles are more generalized and abstract.
+        </Text>
+        <Text>
+          The design pattern contains much more practical advice and concrete.
+        </Text>
+        <Text>
+          The design patterns are related to the entire class problems, not just
+          generalized coding practices.
+        </Text>
+        <br />
+        <Text>Some of these Design Principles are:</Text>
+        <Text>1. “Encapsulate what varies”</Text>
+        <Text>2. “Favor composition”</Text>
+        <Text>3. “Program to interfaces”</Text>
+        <Text>4. “Loose coupling”</Text>
+        <Text>5. SOLID principles</Text>
+        <Text>6. DRY (Don't Repeat Yourself) Principles</Text>
+        <Text>7. KISS (Keep It Simple and Stupid Principle) Principle</Text>
+        <Text>8. Composition Over Inheritance Principle</Text>
+        <br />
+        <Text>
+          Source(s): <br />
+        </Text>
+        <Text>
+          https://bootcamp.uxdesign.cc/software-design-principles-every-developers-should-know-23d24735518e
+        </Text>
+        <Text>https://www.javatpoint.com/design-principles-in-java</Text>
+      </>
+    ),
+  },
+  {
+    text: (
+      <>
+        <Text>
+          <Text>
+            SOLID principles are object-oriented design concepts relevant to
+            software development.
+          </Text>
+          <Text>
+            Principles are best practices to follow to allow scalable
+            architecture and software craftmanship.
+          </Text>
+          <Text>
+            Design patterns are techniques about how to do the design and
+            architect thr code.
+          </Text>
+          <Text>
+            Each design pattern has a different use case and is applicable to a
+            different scenario.
+          </Text>
+          <Text>
+            Design Principles are general guidelines that can guide the class
+            structure and relationships.
+          </Text>
+          <Text>
+            On the other hand, Design Patterns are proven solutions that solve
+            commonly reoccurring problems.
+          </Text>
+          <Text>
+            Having said that, most of the practical implementations of these
+            design principles are mostly done using one or more design patterns.
+          </Text>
+          <Text>
+            In Java, the design principles are the set of advice used as rules
+            in design making.
+          </Text>
+          <Text>
+            The only difference between the design principle and design pattern
+            is that the design principles are more generalized and abstract.
+          </Text>
+          <Text>
+            The design pattern contains much more practical advice and concrete.
+          </Text>
+          <Text>
+            The design patterns are related to the entire class problems, not
+            just generalized coding practices.
+          </Text>
+          <br />
+          <Text>
+            Design principles provide high level guidelines to design better
+            software applications.
+          </Text>
+          <Text>
+            {" "}
+            They do not provide implementation guidelines and are not bound to
+            any programming language
+          </Text>
+          <Text>
+            The SOLID (SRP, OCP, LSP, ISP, DIP) principles are one of the most
+            popular sets of design principles.
+          </Text>
+          <Text>
+            For example, the Single Responsibility Principle (SRP) suggests that
+            a class should have only one reason to change.
+          </Text>
+          <Text>
+            This is a high-level statement which we can keep in mind while
+            designing or creating classes for our application.
+          </Text>
+          <Text>
+            SRP does not provide specific implementation steps but it's up to
+            you how you implement SRP in your application.
+          </Text>
+          <br />
+          <Text>
+            Design Pattern provides low-level solutions related to
+            implementation, of commonly occurring object-oriented problems.
+          </Text>
+          <Text>
+            In other words, design pattern suggests a specific implementation
+            for the specific object-oriented programming problem.
+          </Text>
+          <Text>
+            For example, if you want to create a class that can only have one
+            object at a time,
+          </Text>
+          <Text>
+            then you can use the Singleton design pattern which suggests the
+            best way to create a class that can only have one object.
+          </Text>
+          <Text>
+            Design patterns are tested by others and are safe to follow, e.g.
+            Gang of Four patterns: Abstract Factory, Factory, Singleton,
+            Command, etc.
+          </Text>
+        </Text>
+      </>
+    ),
+  },
   {
     text: (
       <>
@@ -10,36 +149,35 @@ const textContent = [
           SOLID principles are object-oriented design concepts relevant to
           software development.
         </Text>
-        <Text>
-          Principles are best practices to follow to allow scalable architecture
-          and software craftmanship.
-        </Text>
-        <Text>
-          Design patterns are techniques about how to do the design and
-          architect your code.
-        </Text>
-        <Text>
-          Each design pattern has a different use case and is applicable to a
-          different scenario.
-        </Text>
-      </>
-    ),
-  },
-  {
-    text: (
-      <>
+        <br />
+        <StyledImg alt="img" src={SolidImg} />
+        <br />
+        <Text>SOLID is an acronym for five other class-design principles:</Text>
+        <Text>1. Single Responsibility Principle</Text>
+        <Text>2. Open-Closed Principle</Text>
+        <Text>3. Liskov Substitution Principle</Text>
+        <Text>4. Interface Segregation Principle, and</Text>
+        <Text>5. Dependency Inversion Principle</Text>
+        <br />
         <Text>
           SOLID is a structured design approach that ensures your software is
           modular and easy to maintain, understand, debug, and refactor.
-          Following SOLID also helps save time and effort in both development
-          and maintenance. SOLID prevents your code from becoming rigid and
-          fragile, which helps you build long-lasting software.
         </Text>
+        <Text>
+          Following SOLID also helps save time and effort in both development
+          and maintenance.
+        </Text>
+        <Text>
+          SOLID prevents the code from becoming rigid and fragile, which helps
+          us to build long-lasting software.
+        </Text>
+        <br />
+        <Text>
+          Here's the github link for understanding various design principles:{" "}
+        </Text>
+        <Text>https://github.com/Java-Techie-jt/solid-principles-example</Text>
       </>
     ),
-  },
-  {
-    text: <></>,
   },
   {
     text: (
