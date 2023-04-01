@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container } from "./styles";
 import { Navbar, SideNav, Content } from "@/common";
 
-const DesignPrinciples = () => {
+const DesignPatterns = () => {
   const [selectedOption, setSelectedOption] = useState(3);
 
   return (
@@ -16,4 +16,4 @@ const DesignPrinciples = () => {
   );
 };
 
-export default DesignPrinciples;
+export default DesignPatterns;
