@@ -1,18 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Option } from "./styles";
 
-const options = [
-  "Design Principles",
-  "Principles Vs Patterns",
-  "SOLID",
-  "Single Responsibility",
-  "Open Closed",
-  "Liskov Substitution",
-  "Interface Segregation",
-  "Dependency Inversion",
-];
 
-const SideNav = ({ selectedOption, setSelectedOption }) => {
+const SideNav = ({ selectedOption, setSelectedOption, options }) => {
   function handleClick(e, option) {
     e.preventDefault();
     e.stopPropagation();
@@ -21,7 +11,7 @@ const SideNav = ({ selectedOption, setSelectedOption }) => {
 
   return (
     <Container>
-      {options.map((i, k) => (
+      {options?.map((i, k) => (
         <Option
           onClick={(e) => handleClick(e, k)}
           key={i}
