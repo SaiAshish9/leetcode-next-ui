@@ -406,7 +406,117 @@ public class Bike implements Vehicle {
   {
     text: (
       <>
-        <Text m>Dependency Inversion Principle (ISP)</Text>
+        <Text m>Dependency Inversion Principle (DIP)</Text>
+        <Text>
+          Depend on abstractions (interfaces) rather than concrete classes.
+        </Text>
+        <Text>
+          High-level modules should not depend on low-level modules, both should
+          depend on abstractions.
+        </Text>
+        <Text>
+          The Dependency Inversion Principle (DIP) states that we should depend
+          on abstractions (interfaces and abstract classes) instead of concrete
+          implementations (classes).
+        </Text>
+        <Text>
+          The abstractions should not depend on details; instead, the details
+          should depend on abstractions.
+        </Text>
+        <Text>Example 1:</Text>
+        <Editor
+          height="13rem"
+          value={`enum OutputDevice {printer, disk};
+
+ void copy(OutputDevice dev){
+    int c;
+    while((c = ReadKeyboard()) != EOF){
+      if(dev == printer) writePrinter(c);
+      else writeDisk(c);
+    }
+}`}
+        />
+        <Text>
+          As the number of outputDevices increases copy method needs to keep
+          changing
+        </Text>
+        <Text>
+          The better implementation is to create a simple interface called
+          reader.
+        </Text>
+        <Editor
+          height="12rem"
+          value={`interface Reader
+ char read();
+ interface Writer
+ char write(char ch);
+ void copy(Reader r, Writer w){
+  char ch;
+  while((ch = r.read()) != EOF) w.write(ch);
+}`}
+        />
+        <Text>
+          copy method can read from any reader and write to any writer it
+          doesn't change when we've a new reader.
+        </Text>
+        <Text>Example 2:</Text>
+        <Text>
+          Consider the example below. We have a Car class that depends on the
+          concrete Engine class; therefore, it is not obeying DIP.
+        </Text>
+        <Editor
+          height="17rem"
+          value={`public class Car {
+ private Engine engine;
+ public Car(Engine e) {
+    engine = e;
+  }
+  public void start() {
+    engine.start();
+    }
+  }
+  public class Engine {
+    public void start() {...}
+ }
+        `}
+        />
+        <Text>
+          The code will work, for now, but what if we wanted to add another
+          engine type, let’s say a diesel engine? This will require refactoring
+          the Car class.
+        </Text>
+        <Text>
+          However, we can solve this by introducing a layer of abstraction.
+          Instead of Car depending directly on Engine, let’s add an interface:
+        </Text>
+        <Editor
+          height={"6rem"}
+          value={`public interface Engine {
+ public void start();
+}`}
+        />
+        <Text>
+          Now we can connect any type of Engine that implements the Engine
+          interface to the Car class:
+        </Text>
+        <Editor
+          height={"20rem"}
+          value={`public class Car {
+   private Engine engine;
+    public Car(Engine e) {
+      engine = e;
+    }
+    public void start() {
+      engine.start();
+    }
+    }
+    public class PetrolEngine implements Engine {
+      public void start() {...}
+    }
+    public class DieselEngine implements Engine {
+      public void start() {...}
+}`}
+        />
       </>
     ),
   },
