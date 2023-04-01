@@ -3,9 +3,22 @@ import { Container } from "./styles";
 import { Navbar, SideNav, Content } from "@/common";
 
 const DesignPatterns = () => {
-  const [selectedOption, setSelectedOption] = useState(3);
+  const [selectedOption, setSelectedOption] = useState(0);
 
-  const options = [];
+  const options = [
+    "Singleton",
+    "Factory",
+    "Builder",
+    "Prototype",
+    "Proxy",
+    "Fascade",
+    "Composite",
+    "Decorator",
+    "Flyweight",
+    "Adaptor",
+    "Bridge",
+    "Observer"
+  ];
 
   const textContent = [];
 
