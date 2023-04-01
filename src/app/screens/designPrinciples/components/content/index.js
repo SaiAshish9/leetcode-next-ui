@@ -44,7 +44,7 @@ const textContent = [
   {
     text: (
       <>
-        <Text m>Single Responsibility</Text>
+        <Text m>Single Responsibility Principle (SRP)</Text>
         <Text>
           Every class in Java should have a single job to do. To be precise,
           there should only be one reason to change a class.
@@ -133,7 +133,7 @@ const textContent = [
   {
     text: (
       <>
-        <Text m>Open/Closed</Text>
+        <Text m>Open/Closed Principle (OCP)</Text>
         <Text>
           Software entities (e.g., classes, modules, functions) should be open
           for an extension, but closed for modification.
@@ -236,10 +236,9 @@ public double Area(Shape[] shapes){
   {
     text: (
       <>
-        <Text m>Liskov substitution principle</Text>
+        <Text m>Liskov Substitution Principle (LSP)</Text>
         <Text>
-          The Liskov Substitution Principle (LSP) applies to inheritance
-          hierarchies such that <br />
+          It applies to inheritance hierarchies such that <br />
           derived classes must be completely substitutable for their base
           classes.
         </Text>
@@ -312,7 +311,7 @@ void test(Rectangle r){
   {
     text: (
       <>
-        <Text>Interface Segregation Principle ISP</Text>
+        <Text m>Interface Segregation Principle (ISP)</Text>
         <Text>
           No client should be forced to depend on methods that it does not use.
         </Text>
@@ -338,7 +337,7 @@ void test(Rectangle r){
         <Text>Example 1:</Text>
         <Text>Suppose there’s an interface for vehicle and a Bike class:</Text>
         <Editor
-          height={"21rem"}
+          height={"22rem"}
           value={`public interface Vehicle {
  public void drive();
  public void stop();
@@ -368,13 +367,46 @@ public class Bike implements Vehicle {
         </Text>
         <Text>and therefore methods, that it does not need.</Text>
         <Text>Example 2:</Text>
+        <Editor
+          height="15.5rem"
+          value={` Animal 
+ void feed(); // abstract
+ void groom();
+        
+ Dog implements Animal 
+ void feed(); // implementation
+ void groom();
+        
+ Tiger implements Animal
+ void feed(); // implementation 
+ void groom();`}
+        />
+        <Text>
+          we are providing a dummy implementation just to keep the compiler
+          happy. Ideal way is to create another interface called Pet
+        </Text>
+        <Editor
+          height="16.5rem"
+          value={` Animal
+ void feed()
+        
+ Pet extends Animal
+ void groom()
+        
+ Dog implements Pet 
+ void feed(); // implementation
+ void groom();
+        
+ Tiger implements Animal
+ void feed(); // implementation `}
+        />
       </>
     ),
   },
   {
     text: (
       <>
-        <Text></Text>
+        <Text m>Dependency Inversion Principle (ISP)</Text>
       </>
     ),
   },
