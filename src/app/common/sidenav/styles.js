@@ -5,6 +5,10 @@ export const Container = styled.div`
   height: calc(100% - 50px);
   border-right: 1px solid rgb(61 61 61);
   position: absolute;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Option = styled.p`
