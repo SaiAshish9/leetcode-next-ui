@@ -6,6 +6,17 @@ import DecoratorImg from "@/assets/p.png";
 import AdapterImg from "@/assets/adapter.png";
 import ObserverImg from "@/assets/observer.png";
 import ObserverOPImg from "@/assets/observerOp.png";
+import StrategyImg from "@/assets/strategy.png";
+import AbstractFactoryImg from "@/assets/abstractFactory.png";
+import NullImg from "@/assets/null.png";
+import StateImg from "@/assets/state.png";
+import CommandImg from "@/assets/command.png";
+import IntepreterImg from "@/assets/intepreter.png";
+import IteratorImg from "@/assets/iterator.png";
+import MediatorImg from "@/assets/mediator.png";
+import MomentoImg from "@/assets/momento.png";
+import TemplateImg from "@/assets/template.png";
+import VisitorImg from "@/assets/visitor.png";
 
 const DesignPatterns = () => {
   const [selectedOption, setSelectedOption] = useState(0);
@@ -1334,10 +1345,1355 @@ public class ObserverPatternTest {
       text: (
         <>
           <Text m>Properties:</Text>
+          <Text>
+            1. In Strategy pattern, a class behavior or its algorithm can be
+            changed at run time. This type of design pattern comes under
+            behavior pattern.
+          </Text>
+          <Text>
+            2. In Strategy pattern, we create objects which represent various
+            strategies and a context object whose behavior varies as per its
+            strategy object. The strategy object changes the executing algorithm
+            of the context object.
+          </Text>
           <br />
           <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a Strategy interface defining an action
+            and concrete strategy classes implementing the Strategy interface.
+            Context is a class which uses a Strategy.
+          </Text>
+          <Text>
+            2. StrategyPatternDemo, our demo class, will use Context and
+            strategy objects to demonstrate change in Context behaviour based on
+            strategy it deploys or uses.
+          </Text>
+          <StyledImg src={StrategyImg} alt="img" />
+          <Editor
+            value={`public interface Strategy {
+   public int doOperation(int num1, int num2);
+}
+
+public class OperationAdd implements Strategy{
+   @Override
+   public int doOperation(int num1, int num2) {
+      return num1 + num2;
+   }
+}
+
+public class OperationSubstract implements Strategy{
+   @Override
+   public int doOperation(int num1, int num2) {
+      return num1 - num2;
+   }
+}
+
+public class OperationMultiply implements Strategy{
+   @Override
+   public int doOperation(int num1, int num2) {
+      return num1 * num2;
+   }
+}
+
+public class Context {
+   private Strategy strategy;
+
+   public Context(Strategy strategy){
+      this.strategy = strategy;
+   }
+
+   public int executeStrategy(int num1, int num2){
+      return strategy.doOperation(num1, num2);
+   }
+}
+
+
+public class StrategyPatternDemo {
+   public static void main(String[] args) {
+      Context context = new Context(new OperationAdd());		
+      System.out.println("10 + 5 = " + context.executeStrategy(10, 5));
+
+      context = new Context(new OperationSubstract());		
+      System.out.println("10 - 5 = " + context.executeStrategy(10, 5));
+
+      context = new Context(new OperationMultiply());		
+      System.out.println("10 * 5 = " + context.executeStrategy(10, 5));
+   }
+}`}
+            height={"60rem"}
+          />
         </>
       ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Abstract Factory patterns work around a super-factory which
+            creates other factories.
+          </Text>
+          <Text>This factory is also called as factory of factories.</Text>
+          <Text>
+            This type of design pattern comes under creational pattern as this
+            pattern provides one of the best ways to create an object.
+          </Text>
+          <Text>
+            2. In Abstract Factory pattern an interface is responsible for
+            creating a factory of related objects without explicitly specifying
+            their classes.
+          </Text>
+          <Text>
+            Each generated factory can give the objects as per the Factory
+            pattern.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a Shape interface and a concrete class
+            implementing it.
+          </Text>
+          <Text>
+            2. We create an abstract factory class AbstractFactory as next step.
+            Factory class ShapeFactory is defined, which extends
+            AbstractFactory. A factory creator/generator class FactoryProducer
+            is created.
+          </Text>
+          <Text>
+            3. AbstractFactoryPatternDemo, our demo class uses FactoryProducer
+            to get a AbstractFactory object.
+          </Text>
+          <Text>
+            4. It will pass information (CIRCLE / RECTANGLE / SQUARE for Shape)
+            to AbstractFactory to get the type of object it needs.
+          </Text>
+          <StyledImg src={AbstractFactoryImg} alt="img" />
+          <Editor
+            value={`public interface Shape {
+   void draw();
+}
+
+public class RoundedRectangle implements Shape {
+   @Override
+   public void draw() {
+      System.out.println("Inside RoundedRectangle::draw() method.");
+   }
+}
+
+public class Rectangle implements Shape {
+   @Override
+   public void draw() {
+      System.out.println("Inside Rectangle::draw() method.");
+   }
+}
+
+public abstract class AbstractFactory {
+   abstract Shape getShape(String shapeType) ;
+}
+
+public class ShapeFactory extends AbstractFactory {
+   @Override
+   public Shape getShape(String shapeType){    
+      if(shapeType.equalsIgnoreCase("RECTANGLE")){
+         return new Rectangle();         
+      }else if(shapeType.equalsIgnoreCase("SQUARE")){
+         return new Square();
+      }	 
+      return null;
+   }
+}
+
+public class RoundedShapeFactory extends AbstractFactory {
+   @Override
+   public Shape getShape(String shapeType){    
+      if(shapeType.equalsIgnoreCase("RECTANGLE")){
+         return new RoundedRectangle();         
+      }else if(shapeType.equalsIgnoreCase("SQUARE")){
+         return new RoundedSquare();
+      }	 
+      return null;
+   }
+}
+
+public class FactoryProducer {
+   public static AbstractFactory getFactory(boolean rounded){   
+      if(rounded){
+         return new RoundedShapeFactory();         
+      }else{
+         return new ShapeFactory();
+      }
+   }
+}
+
+public class AbstractFactoryPatternDemo {
+   public static void main(String[] args) {
+      //get shape factory
+      AbstractFactory shapeFactory = FactoryProducer.getFactory(false);
+      //get an object of Shape Rectangle
+      Shape shape1 = shapeFactory.getShape("RECTANGLE");
+      //call draw method of Shape Rectangle
+      shape1.draw();
+      //get an object of Shape Square 
+      Shape shape2 = shapeFactory.getShape("SQUARE");
+      //call draw method of Shape Square
+      shape2.draw();
+      //get shape factory
+      AbstractFactory shapeFactory1 = FactoryProducer.getFactory(true);
+      //get an object of Shape Rectangle
+      Shape shape3 = shapeFactory1.getShape("RECTANGLE");
+      //call draw method of Shape Rectangle
+      shape3.draw();
+      //get an object of Shape Square 
+      Shape shape4 = shapeFactory1.getShape("SQUARE");
+      //call draw method of Shape Square
+      shape4.draw();
+      
+   }
+}`}
+            height={"94rem"}
+          />
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. The chain of responsibility pattern creates a chain of receiver
+            objects for a request.
+          </Text>
+          <Text>
+            2. This pattern decouples sender and receiver of a request based on
+            type of request. This pattern comes under behavioral patterns.
+          </Text>
+          <Text>
+            3. In this pattern, normally each receiver contains reference to
+            another receiver.
+          </Text>
+          <Text>
+            4. If one object cannot handle the request then it passes the same
+            to the next receiver and so on.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We have created an abstract class AbstractLogger with a level of
+            logging.
+          </Text>
+          <Text>
+            {" "}
+            2. Then we have created three types of loggers extending the
+            AbstractLogger.
+          </Text>
+          <Text>
+            3. Each logger checks the level of message to its level and print
+            accordingly otherwise does not print and pass the message to its
+            next logger.
+          </Text>
+          <Editor
+            value={`public abstract class AbstractLogger {
+   public static int INFO = 1;
+   public static int DEBUG = 2;
+   public static int ERROR = 3;
+
+   protected int level;
+
+   //next element in chain or responsibility
+   protected AbstractLogger nextLogger;
+
+   public void setNextLogger(AbstractLogger nextLogger){
+      this.nextLogger = nextLogger;
+   }
+
+   public void logMessage(int level, String message){
+      if(this.level <= level){
+         write(message);
+      }
+      if(nextLogger !=null){
+         nextLogger.logMessage(level, message);
+      }
+   }
+
+   abstract protected void write(String message);
+	
+}
+
+public class ConsoleLogger extends AbstractLogger {
+
+   public ConsoleLogger(int level){
+      this.level = level;
+   }
+
+   @Override
+   protected void write(String message) {		
+      System.out.println("Standard Console::Logger: " + message);
+   }
+}
+
+public class ErrorLogger extends AbstractLogger {
+
+   public ErrorLogger(int level){
+      this.level = level;
+   }
+
+   @Override
+   protected void write(String message) {		
+      System.out.println("Error Console::Logger: " + message);
+   }
+}
+
+public class FileLogger extends AbstractLogger {
+
+   public FileLogger(int level){
+      this.level = level;
+   }
+
+   @Override
+   protected void write(String message) {		
+      System.out.println("File::Logger: " + message);
+   }
+}
+
+public class ChainPatternDemo {
+	
+   private static AbstractLogger getChainOfLoggers(){
+
+      AbstractLogger errorLogger = new ErrorLogger(AbstractLogger.ERROR);
+      AbstractLogger fileLogger = new FileLogger(AbstractLogger.DEBUG);
+      AbstractLogger consoleLogger = new ConsoleLogger(AbstractLogger.INFO);
+
+      errorLogger.setNextLogger(fileLogger);
+      fileLogger.setNextLogger(consoleLogger);
+
+      return errorLogger;	
+   }
+
+   public static void main(String[] args) {
+      AbstractLogger loggerChain = getChainOfLoggers();
+
+      loggerChain.logMessage(AbstractLogger.INFO, 
+         "This is an information.");
+
+      loggerChain.logMessage(AbstractLogger.DEBUG, 
+         "This is an debug level information.");
+
+      loggerChain.logMessage(AbstractLogger.ERROR, 
+         "This is an error information.");
+   }
+}`}
+            height="104rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Standard Console::Logger: This is an information.</Text>
+          <Text>File::Logger: This is an debug level information.</Text>
+          <Text>
+            Standard Console::Logger: This is an debug level information.
+          </Text>
+          <Text>Error Console::Logger: This is an error information.</Text>
+          <Text>File::Logger: This is an error information. </Text>
+          <Text>Standard Console::Logger: This is an error information.</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. In Null Object pattern, a null object replaces check of NULL
+            object instance.
+          </Text>
+          <Text>
+            Instead of putting if check for a null value, Null Object reflects a
+            do nothing relationship.
+          </Text>
+          <Text>
+            Such Null object can also be used to provide default behaviour in
+            case data is not available.
+          </Text>
+          <Text>
+            2. In Null Object pattern, we create an abstract class specifying
+            various operations to be done, concrete classes extending this class
+            and a null object class providing do nothing implemention of this
+            class and will be used seemlessly where we need to check null value.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a AbstractCustomer abstract class defining
+            opearations.
+          </Text>
+          <Text>
+            {" "}
+            Here the name of the customer and concrete classes extending the
+            AbstractCustomer class.
+          </Text>
+          <Text>
+            {" "}
+            A factory class CustomerFactory is created to return either
+            RealCustomer or NullCustomer objects based on the name of customer
+            passed to it.
+          </Text>
+          <Text>
+            2. NullPatternDemo, our demo class, will use CustomerFactory to
+            demonstrate the use of Null Object pattern.
+          </Text>
+          <StyledImg src={NullImg} alt="img" />
+          <Editor
+            value={`public abstract class AbstractCustomer {
+   protected String name;
+   public abstract boolean isNil();
+   public abstract String getName();
+}
+
+public class RealCustomer extends AbstractCustomer {
+
+   public RealCustomer(String name) {
+      this.name = name;		
+   }
+   
+   @Override
+   public String getName() {
+      return name;
+   }
+   
+   @Override
+   public boolean isNil() {
+      return false;
+   }
+}
+
+
+public class NullCustomer extends AbstractCustomer {
+
+   @Override
+   public String getName() {
+      return "Not Available in Customer Database";
+   }
+
+   @Override
+   public boolean isNil() {
+      return true;
+   }
+}
+
+public class CustomerFactory {
+	
+   public static final String[] names = {"Rob", "Joe", "Julie"};
+
+   public static AbstractCustomer getCustomer(String name){
+   
+      for (int i = 0; i < names.length; i++) {
+         if (names[i].equalsIgnoreCase(name)){
+            return new RealCustomer(name);
+         }
+      }
+      return new NullCustomer();
+   }
+}
+
+public class NullPatternDemo {
+   public static void main(String[] args) {
+
+      AbstractCustomer customer1 = CustomerFactory.getCustomer("Rob");
+      AbstractCustomer customer2 = CustomerFactory.getCustomer("Bob");
+      AbstractCustomer customer3 = CustomerFactory.getCustomer("Julie");
+      AbstractCustomer customer4 = CustomerFactory.getCustomer("Laura");
+
+      System.out.println("Customers");
+      System.out.println(customer1.getName());
+      System.out.println(customer2.getName());
+      System.out.println(customer3.getName());
+      System.out.println(customer4.getName());
+   }
+}`}
+            height="78rem"
+          />
+          <Text m>Output</Text>
+          <Text>Customers </Text>
+          <Text>Rob</Text>
+          <Text>Not Available in Customer Database </Text>
+          <Text>Julie </Text>
+          <Text>Not Available in Customer Database</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. In State pattern a class behavior changes based on its state.
+          </Text>
+          <Text>This type of design pattern comes under behavior pattern.</Text>
+          <Text>
+            2. In State pattern, we create objects which represent various
+            states
+          </Text>
+          <Text>
+            and a context object whose behavior varies as its state object
+            changes.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            2. We are going to create a State interface defining an action and
+            concrete state classes implementing the State interface.
+          </Text>
+          <Text>2. Context is a class which carries a State.</Text>
+          <Text>3. StatePatternDemo, our demo class, will use Context</Text>
+          <Text>
+            and state objects to demonstrate change in Context behavior based on
+            type of state it is in.
+          </Text>
+          <StyledImg alt="img" src={StateImg} />
+          <Editor
+            value={`public interface State {
+   public void doAction(Context context);
+}
+
+public class StartState implements State {
+
+   public void doAction(Context context) {
+      System.out.println("Player is in start state");
+      context.setState(this);	
+   }
+
+   public String toString(){
+      return "Start State";
+   }
+}
+
+public class StopState implements State {
+
+   public void doAction(Context context) {
+      System.out.println("Player is in stop state");
+      context.setState(this);	
+   }
+
+   public String toString(){
+      return "Stop State";
+   }
+}
+
+public class Context {
+   private State state;
+
+   public Context(){
+      state = null;
+   }
+
+   public void setState(State state){
+      this.state = state;		
+   }
+
+   public State getState(){
+      return state;
+   }
+}
+
+
+public class StatePatternDemo {
+   public static void main(String[] args) {
+      Context context = new Context();
+
+      StartState startState = new StartState();
+      startState.doAction(context);
+
+      System.out.println(context.getState().toString());
+
+      StopState stopState = new StopState();
+      stopState.doAction(context);
+
+      System.out.println(context.getState().toString());
+   }
+}`}
+            height="71rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Player is in start state</Text>
+          <Text>Start State</Text>
+          <Text>Player is in stop state</Text>
+          <Text>Stop State</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Command pattern is a data driven design pattern and falls under
+            behavioral pattern category.
+          </Text>
+          <Text>
+            A request is wrapped under an object as command and passed to
+            invoker object.
+          </Text>
+          <Text>
+            2. Invoker object looks for the appropriate object which can handle
+            this command
+          </Text>
+          <Text>
+            and passes the command to the corresponding object which executes
+            the command.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1, We have created an interface Order which is acting as a command.
+          </Text>
+          <Text>We have created a Stock class which acts as a request. </Text>
+          <Text>
+            We have concrete command classes BuyStock and SellStock implementing
+            Order interface which will do actual command processing.
+          </Text>
+          <Text>
+            {" "}
+            2. A class Broker is created which acts as an invoker object. It can
+            take and place orders.
+          </Text>
+          <Text>
+            Broker object uses command pattern to identify which object will
+            execute which command based on the type of command.
+          </Text>
+          <Text>
+            CommandPatternDemo, our demo class, will use Broker class to
+            demonstrate command pattern.
+          </Text>
+          <StyledImg alt="img" src={CommandImg} />
+          <Editor
+            value={`public interface Order {
+   void execute();
+}
+
+public class Stock {
+	
+   private String name = "ABC";
+   private int quantity = 10;
+
+   public void buy(){
+      System.out.println("Stock [ Name: "+name+", 
+         Quantity: " + quantity +" ] bought");
+   }
+   public void sell(){
+      System.out.println("Stock [ Name: "+name+", 
+         Quantity: " + quantity +" ] sold");
+   }
+}
+
+public class BuyStock implements Order {
+   private Stock abcStock;
+
+   public BuyStock(Stock abcStock){
+      this.abcStock = abcStock;
+   }
+
+   public void execute() {
+      abcStock.buy();
+   }
+}
+
+public class SellStock implements Order {
+   private Stock abcStock;
+
+   public SellStock(Stock abcStock){
+      this.abcStock = abcStock;
+   }
+
+   public void execute() {
+      abcStock.sell();
+   }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+   public class Broker {
+   private List<Order> orderList = new ArrayList<Order>(); 
+
+   public void takeOrder(Order order){
+      orderList.add(order);		
+   }
+
+   public void placeOrders(){
+   
+      for (Order order : orderList) {
+         order.execute();
+      }
+      orderList.clear();
+   }
+}
+
+public class CommandPatternDemo {
+   public static void main(String[] args) {
+      Stock abcStock = new Stock();
+
+      BuyStock buyStockOrder = new BuyStock(abcStock);
+      SellStock sellStockOrder = new SellStock(abcStock);
+
+      Broker broker = new Broker();
+      broker.takeOrder(buyStockOrder);
+      broker.takeOrder(sellStockOrder);
+
+      broker.placeOrders();
+   }
+}
+`}
+            height="90rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Stock [ Name: ABC, Quantity: 10 ] bought</Text>
+          <Text>Stock [ Name: ABC, Quantity: 10 ] sold</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Interpreter pattern provides a way to evaluate language grammar
+            or expression.
+          </Text>
+          <Text>This type of pattern comes under behavioral pattern.</Text>
+          <Text>
+            This pattern involves implementing an expression interface which
+            tells to interpret a particular context.{" "}
+          </Text>
+          <Text>
+            This pattern is used in SQL parsing, symbol processing engine etc.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create an interface Expression and concrete
+            classes implementing the Expression interface.
+          </Text>
+          <Text>
+            {" "}
+            2. A class TerminalExpression is defined which acts as a main
+            interpreter of context in question.
+          </Text>
+          <Text>
+            {" "}
+            3. Other classes OrExpression, AndExpression are used to create
+            combinational expressions.
+          </Text>
+          <Text>
+            4. InterpreterPatternDemo, our demo class, will use Expression class
+            to create rules and demonstrate parsing of expressions.
+          </Text>
+          <StyledImg src={IntepreterImg} alt="img" />
+          <Editor
+            value={`public interface Expression {
+   public boolean interpret(String context);
+}
+
+public class TerminalExpression implements Expression {
+	
+   private String data;
+
+   public TerminalExpression(String data){
+      this.data = data; 
+   }
+
+   @Override
+   public boolean interpret(String context) {
+   
+      if(context.contains(data)){
+         return true;
+      }
+      return false;
+   }
+}
+
+public class OrExpression implements Expression {
+	 
+   private Expression expr1 = null;
+   private Expression expr2 = null;
+
+   public OrExpression(Expression expr1, Expression expr2) { 
+      this.expr1 = expr1;
+      this.expr2 = expr2;
+   }
+
+   @Override
+   public boolean interpret(String context) {		
+      return expr1.interpret(context) || expr2.interpret(context);
+   }
+}
+
+public class AndExpression implements Expression {
+	 
+   private Expression expr1 = null;
+   private Expression expr2 = null;
+
+   public AndExpression(Expression expr1, Expression expr2) { 
+      this.expr1 = expr1;
+      this.expr2 = expr2;
+   }
+
+   @Override
+   public boolean interpret(String context) {		
+      return expr1.interpret(context) && expr2.interpret(context);
+   }
+}
+
+public class InterpreterPatternDemo {
+
+   //Rule: Robert and John are male
+   public static Expression getMaleExpression(){
+      Expression robert = new TerminalExpression("Robert");
+      Expression john = new TerminalExpression("John");
+      return new OrExpression(robert, john);		
+   }
+
+   //Rule: Julie is a married women
+   public static Expression getMarriedWomanExpression(){
+      Expression julie = new TerminalExpression("Julie");
+      Expression married = new TerminalExpression("Married");
+      return new AndExpression(julie, married);		
+   }
+
+   public static void main(String[] args) {
+      Expression isMale = getMaleExpression();
+      Expression isMarriedWoman = getMarriedWomanExpression();
+
+      System.out.println("John is male? " + isMale.interpret("John"));
+      System.out.println("Julie is a married women? " + isMarriedWoman.interpret("Married Julie"));
+   }
+}
+`}
+            height="91rem"
+          />
+          <Text>Output:</Text>
+          <Text>John is male? true</Text>
+          <Text>Julie is a married women? true</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Iterator pattern is very commonly used design pattern in Java and
+            .Net programming environment.{" "}
+          </Text>
+          <Text>
+            This pattern is used to get a way to access the elements of a
+            collection object in sequential manner without any need to know its
+            underlying representation.
+          </Text>
+          <Text>
+            3. Iterator pattern falls under behavioral pattern category.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We're going to create a Iterator interface which narrates
+            navigation method and a Container interface which retruns the
+            iterator.
+          </Text>
+          <Text>
+            Concrete classes implementing the Container interface will be
+            responsible to implement Iterator interface and use it
+          </Text>
+          <Text>
+            2. IteratorPatternDemo, our demo class will use NamesRepository, a
+            concrete class implementation to print a Names stored as a
+            collection in NamesRepository.
+          </Text>
+          <StyledImg alt="img" src={IteratorImg} />
+          <Editor
+            value={`public interface Iterator {
+   public boolean hasNext();
+   public Object next();
+}
+
+public interface Container {
+   public Iterator getIterator();
+}
+
+public class NameRepository implements Container {
+   public String names[] = {"Robert" , "John" ,"Julie" , "Lora"};
+
+   @Override
+   public Iterator getIterator() {
+      return new NameIterator();
+   }
+
+   private class NameIterator implements Iterator {
+
+      int index;
+
+      @Override
+      public boolean hasNext() {
+      
+         if(index < names.length){
+            return true;
+         }
+         return false;
+      }
+
+      @Override
+      public Object next() {
+      
+         if(this.hasNext()){
+            return names[index++];
+         }
+         return null;
+      }		
+   }
+}
+
+public class IteratorPatternDemo {
+	
+   public static void main(String[] args) {
+      NameRepository namesRepository = new NameRepository();
+
+      for(Iterator iter = namesRepository.getIterator(); iter.hasNext();){
+         String name = (String)iter.next();
+         System.out.println("Name : " + name);
+      } 	
+   }
+}`}
+            height="61rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Name : Robert</Text>
+          <Text>Name : John</Text>
+          <Text>Name : Julie</Text>
+          <Text>Name : Lora</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Mediator pattern is used to reduce communication complexity
+            between multiple objects or classes.
+          </Text>
+          <Text>
+            This pattern provides a mediator class which normally handles all
+            the communications between different classes and supports easy
+            maintenance of the code by loose coupling.
+          </Text>
+          <Text>
+            2. Mediator pattern falls under behavioral pattern category.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are demonstrating mediator pattern by example of a chat room
+            where multiple users can send message to chat room and it is the
+            responsibility of chat room to show the messages to all users.
+          </Text>
+          <Text>
+            2. We have created two classes ChatRoom and User. User objects will
+            use ChatRoom method to share their messages.
+          </Text>
+          <Text>
+            3. MediatorPatternDemo, our demo class, will use User objects to
+            show communication between them.
+          </Text>
+          <StyledImg src={MediatorImg} alt="img" />
+          <Editor
+            value={`import java.util.Date;
+
+public class ChatRoom {
+   public static void showMessage(User user, String message){
+      System.out.println(new Date().toString() + " [" + user.getName() + "] : " + message);
+   }
+}
+
+public class User {
+   private String name;
+
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public User(String name){
+      this.name  = name;
+   }
+
+   public void sendMessage(String message){
+      ChatRoom.showMessage(this,message);
+   }
+}
+
+public class MediatorPatternDemo {
+   public static void main(String[] args) {
+      User robert = new User("Robert");
+      User john = new User("John");
+
+      robert.sendMessage("Hi! John!");
+      john.sendMessage("Hello! Robert!");
+   }
+}
+`}
+            height="45rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Thu Jan 31 16:05:46 IST 2013 [Robert] : Hi! John!</Text>
+          <Text>Thu Jan 31 16:05:46 IST 2013 [John] : Hello! Robert!</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Memento pattern is used to restore state of an object to a
+            previous state.
+          </Text>
+          <Text>
+            2. Memento pattern falls under behavioral pattern category.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>1. Memento pattern uses three actor classes.</Text>
+          <Text>
+            2. Memento contains state of an object to be restored. Originator
+            creates and stores states in Memento objects and Caretaker object is
+            responsible to restore object state from Memento.{" "}
+          </Text>
+          <Text>
+            3. We have created classes Memento, Originator and CareTaker.
+          </Text>
+          <Text>
+            4. MementoPatternDemo, our demo class, will use CareTaker and
+            Originator objects to show restoration of object states.
+          </Text>
+          <StyledImg src={MomentoImg} alt="img" />
+          <Editor
+            value={`public class Memento {
+   private String state;
+
+   public Memento(String state){
+      this.state = state;
+   }
+
+   public String getState(){
+      return state;
+   }	
+}
+
+public class Originator {
+   private String state;
+
+   public void setState(String state){
+      this.state = state;
+   }
+
+   public String getState(){
+      return state;
+   }
+
+   public Memento saveStateToMemento(){
+      return new Memento(state);
+   }
+
+   public void getStateFromMemento(Memento memento){
+      state = memento.getState();
+   }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CareTaker {
+   private List<Memento> mementoList = new ArrayList<Memento>();
+
+   public void add(Memento state){
+      mementoList.add(state);
+   }
+
+   public Memento get(int index){
+      return mementoList.get(index);
+   }
+}
+
+public class MementoPatternDemo {
+   public static void main(String[] args) {
+   
+      Originator originator = new Originator();
+      CareTaker careTaker = new CareTaker();
+      
+      originator.setState("State #1");
+      originator.setState("State #2");
+      careTaker.add(originator.saveStateToMemento());
+      
+      originator.setState("State #3");
+      careTaker.add(originator.saveStateToMemento());
+      
+      originator.setState("State #4");
+      System.out.println("Current State: " + originator.getState());		
+      
+      originator.getStateFromMemento(careTaker.get(0));
+      System.out.println("First saved State: " + originator.getState());
+      originator.getStateFromMemento(careTaker.get(1));
+      System.out.println("Second saved State: " + originator.getState());
+   }
+}`}
+            height="81rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Current State: State #4</Text>
+          <Text>First saved State: State #2</Text>
+          <Text>Second saved State: State #3</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. In Template pattern, an abstract class exposes defined
+            way(s)/template(s) to execute its methods.
+          </Text>
+          <Text>
+            2. Its subclasses can override the method implementation as per need
+            but the invocation is to be in the same way as defined by an
+            abstract class. This pattern comes under behavior pattern category.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a Game abstract class defining operations
+            with a template method set to be final so that it cannot be
+            overridden.
+          </Text>
+          <Text>
+            Cricket and Football are concrete classes that extend Game and
+            override its methods.
+          </Text>
+          <Text>
+            2. TemplatePatternDemo, our demo class, will use Game to demonstrate
+            use of template pattern.
+          </Text>
+          <StyledImg alt="img" src={TemplateImg} />
+          <Editor
+            value={`public abstract class Game {
+   abstract void initialize();
+   abstract void startPlay();
+   abstract void endPlay();
+
+   //template method
+   public final void play(){
+
+      //initialize the game
+      initialize();
+
+      //start game
+      startPlay();
+
+      //end game
+      endPlay();
+   }
+}
+
+public class Cricket extends Game {
+
+   @Override
+   void endPlay() {
+      System.out.println("Cricket Game Finished!");
+   }
+
+   @Override
+   void initialize() {
+      System.out.println("Cricket Game Initialized! Start playing.");
+   }
+
+   @Override
+   void startPlay() {
+      System.out.println("Cricket Game Started. Enjoy the game!");
+   }
+}
+
+public class Football extends Game {
+
+   @Override
+   void endPlay() {
+      System.out.println("Football Game Finished!");
+   }
+
+   @Override
+   void initialize() {
+      System.out.println("Football Game Initialized! Start playing.");
+   }
+
+   @Override
+   void startPlay() {
+      System.out.println("Football Game Started. Enjoy the game!");
+   }
+}
+
+public class TemplatePatternDemo {
+   public static void main(String[] args) {
+
+      Game game = new Cricket();
+      game.play();
+      System.out.println();
+      game = new Football();
+      game.play();		
+   }
+}`}
+            height="76rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Cricket Game Initialized! Start playing.</Text>
+          <Text>Cricket Game Started. Enjoy the game!</Text>
+          <Text>Cricket Game Finished!</Text>
+          <Text>Football Game Initialized! Start playing.</Text>
+          <Text>Football Game Started. Enjoy the game!</Text>
+          <Text>Football Game Finished!</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. In Visitor pattern, we use a visitor class which changes the
+            executing algorithm of an element class.
+          </Text>
+          <Text>
+            {" "}
+            2. By this way, execution algorithm of element can vary as and when
+            visitor varies. This pattern comes under behavior pattern category.{" "}
+          </Text>
+          <Text>
+            3. As per the pattern, element object has to accept the visitor
+            object so that visitor object handles the operation on the element
+            object.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a ComputerPart interface defining accept
+            opearation.Keyboard, Mouse, Monitor and Computer are concrete
+            classes implementing ComputerPart interface.
+          </Text>
+          <Text>
+            {" "}
+            2. We will define another interface ComputerPartVisitor which will
+            define a visitor class operations. Computer uses concrete visitor to
+            do corresponding action.
+          </Text>
+          <Text>
+            3. VisitorPatternDemo, our demo class, will use Computer and
+            ComputerPartVisitor classes to demonstrate use of visitor pattern.
+          </Text>
+          <StyledImg src={VisitorImg} alt="img" />
+          <Editor
+            value={`public interface ComputerPart {
+   public void accept(ComputerPartVisitor computerPartVisitor);
+}
+
+public class Keyboard implements ComputerPart {
+
+   @Override
+   public void accept(ComputerPartVisitor computerPartVisitor) {
+      computerPartVisitor.visit(this);
+   }
+}
+
+public class Monitor implements ComputerPart {
+
+   @Override
+   public void accept(ComputerPartVisitor computerPartVisitor) {
+      computerPartVisitor.visit(this);
+   }
+}
+
+public class Mouse implements ComputerPart {
+
+   @Override
+   public void accept(ComputerPartVisitor computerPartVisitor) {
+      computerPartVisitor.visit(this);
+   }
+}
+
+public class Computer implements ComputerPart {
+	
+   ComputerPart[] parts;
+
+   public Computer(){
+      parts = new ComputerPart[] {new Mouse(), new Keyboard(), new Monitor()};		
+   } 
+
+
+   @Override
+   public void accept(ComputerPartVisitor computerPartVisitor) {
+      for (int i = 0; i < parts.length; i++) {
+         parts[i].accept(computerPartVisitor);
+      }
+      computerPartVisitor.visit(this);
+   }
+}
+
+public interface ComputerPartVisitor {
+   public void visit(Computer computer);
+   public void visit(Mouse mouse);
+   public void visit(Keyboard keyboard);
+   public void visit(Monitor monitor);
+}
+
+public class ComputerPartDisplayVisitor implements ComputerPartVisitor {
+
+   @Override
+   public void visit(Computer computer) {
+      System.out.println("Displaying Computer.");
+   }
+
+   @Override
+   public void visit(Mouse mouse) {
+      System.out.println("Displaying Mouse.");
+   }
+
+   @Override
+   public void visit(Keyboard keyboard) {
+      System.out.println("Displaying Keyboard.");
+   }
+
+   @Override
+   public void visit(Monitor monitor) {
+      System.out.println("Displaying Monitor.");
+   }
+}
+
+public class VisitorPatternDemo {
+   public static void main(String[] args) {
+
+      ComputerPart computer = new Computer();
+      computer.accept(new ComputerPartDisplayVisitor());
+   }
+}
+`}
+            height="96rem"
+          />
+          <Text m>Output: </Text>
+          <Text>Displaying Mouse.</Text>
+          <Text>Displaying Keyboard.</Text> <Text>Displaying Monitor.</Text>
+          <Text>Displaying Computer.</Text>
+        </>
+      ),
+    },
+    {
+      text: <></>,
     },
   ];
 

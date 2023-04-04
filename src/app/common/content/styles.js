@@ -26,5 +26,6 @@ export const Text = styled.p`
 export const StyledImg = styled(Image)`
   width: fit-content;
   height: 18rem;
+  max-width: 60vw;
   margin-bottom: 1rem;
 `;
