@@ -4,6 +4,8 @@ import { Navbar, SideNav, Content, Editor } from "@/common";
 import { StyledImg, Text } from "@/common/content/styles";
 import DecoratorImg from "@/assets/p.png";
 import AdapterImg from "@/assets/adapter.png";
+import ObserverImg from "@/assets/observer.png";
+import ObserverOPImg from "@/assets/observerOp.png";
 
 const DesignPatterns = () => {
   const [selectedOption, setSelectedOption] = useState(0);
@@ -1203,6 +1205,7 @@ public class Client {
             All the parties are interested in knowing the current location of
             the product i.e. Seller, User and Warehouse
           </Text>
+          <StyledImg src={ObserverImg} alt="img" />
           <Editor
             value={`package observer;
 
@@ -1323,6 +1326,16 @@ public class ObserverPatternTest {
 }`}
             height={"135rem"}
           />
+          <StyledImg src={ObserverOPImg} alt="img" />
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <br />
+          <Text m>Implementation:</Text>
         </>
       ),
     },
