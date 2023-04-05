@@ -31,6 +31,8 @@ const DesignPatterns = () => {
   const [selectedOption, setSelectedOption] = useState(0);
 
   const options = [
+    "Design Patterns",
+    "Gang Of Four (GOF)",
     "Singleton",
     "Factory",
     "Builder",
@@ -67,6 +69,8 @@ const DesignPatterns = () => {
   ];
 
   const textContent = [
+    { text: <></> },
+    { text: <></> },
     {
       text: (
         <>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Option } from "./styles";
 
-
 const SideNav = ({ selectedOption, setSelectedOption, options }) => {
   function handleClick(e, option) {
     e.preventDefault();
@@ -11,6 +10,7 @@ const SideNav = ({ selectedOption, setSelectedOption, options }) => {
 
   return (
     <Container>
+      <Option>Search Pattern (Total: 32)</Option>
       {options?.map((i, k) => (
         <Option
           onClick={(e) => handleClick(e, k)}
