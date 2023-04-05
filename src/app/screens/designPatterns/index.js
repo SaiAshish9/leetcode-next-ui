@@ -122,6 +122,7 @@ const DesignPatterns = () => {
             Learning these patterns helps unexperienced developers to learn
             software design in an easy and faster way.
           </Text>
+          <br />
           <Text m>Types of Design Patterns:</Text>
           <Text>
             As per the design pattern reference book Design Patterns - Elements
