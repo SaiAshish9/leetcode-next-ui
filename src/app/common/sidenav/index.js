@@ -32,7 +32,9 @@ const SideNav = ({ selectedOption, setSelectedOption, options }) => {
           <StyledSearchImage src={SearchIcon} alt="img" />
           <InputContainer
             onChange={(v) => handleChange(v)}
-            placeholder={`Search pattern (${selectedOptions?.length ?? 0})`}
+            placeholder={`Search pattern (${
+              selectedOptions?.length ? selectedOptions.length - 2 : 0
+            })`}
           />
         </TextInputContainer>
       </Option>

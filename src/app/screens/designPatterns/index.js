@@ -95,6 +95,176 @@ const DesignPatterns = () => {
             and its consequences.
           </Text>
           <Text>It also gives implementation hints and examples.</Text>
+          <br />
+          <Text>
+            A design pattern provides a general reusable solution for the common
+            problems that occur in software design.
+          </Text>
+          <Text>
+            The idea is to speed up the development process by providing
+            well-tested, proven development/design paradigms.
+          </Text>
+          <Text>
+            {" "}
+            Design patterns are programming language independent strategies for
+            solving a common problem.
+          </Text>
+          <Text>
+            That means a design pattern represents an idea, not a particular
+            implementation.
+          </Text>
+          <Text>
+            {" "}
+            By using design patterns, you can make your code more flexible,
+            reusable, and maintainable.
+          </Text>
+          <br />
+          <Text>
+            {" "}
+            It’s not mandatory to always implement design patterns in your
+            project.
+          </Text>
+          <Text> Design patterns are not meant for project development. </Text>
+          <Text>Design patterns are meant for common problem-solving.</Text>
+          <Text>
+            {" "}
+            Whenever there is a need, you have to implement a suitable pattern
+            to avoid such problems in the future.{" "}
+          </Text>
+          <Text>
+            To find out which pattern to use, you just have to try to understand
+            the design patterns and their purposes.
+          </Text>
+          <Text>
+            Only by doing that, you will be able to pick the right one.
+          </Text>
+          <br />
+          <Text m> Goal:</Text>
+          <Text>
+            Understand the purpose and usage of each design pattern in order to
+            pick and implement the correct pattern as needed.
+          </Text>
+          <br />
+          <Text m>Example:</Text>
+          <Text>
+            In many real-world situations, we want to create only one instance
+            of a class. For example, there can be only one active president of a
+            country at any given time.
+          </Text>
+          <Text>
+            {" "}
+            This pattern is called a Singleton pattern. Other software examples
+            could be a single DB connection shared by multiple objects as
+            creating a separate DB connection for every object is costly.
+          </Text>
+          <Text>
+            Similarly, there can be a single configuration manager or error
+            manager in an application that handles all problems instead of
+            creating multiple managers.
+          </Text>
+          <br />
+          <Text m>Types of Design Patterns:</Text>
+          <Text m>1. Creational</Text>
+          <Text>
+            These design patterns are all about class instantiation or object
+            creation.
+          </Text>
+          <Text>
+            These patterns can be further categorized into Class-creational
+            patterns and object-creational patterns.
+          </Text>
+          <Text>
+            {" "}
+            While class-creation patterns use inheritance effectively in the
+            instantiation process, object-creation patterns use delegation
+            effectively to get the job done.
+          </Text>
+          <Text>
+            Creational design patterns are the Factory Method, Abstract Factory,
+            Builder, Singleton, Object Pool, and Prototype.
+          </Text>
+          <br />
+          <Text m>Use Case Of Creational Design Pattern:</Text>
+          <Text>
+            1. Suppose a developer wants to create a simple DBConnection class
+            to connect to a database and wants to access the database at
+            multiple locations from code, generally what the developer will do
+            is create an instance of DBConnection class and use it for doing
+            database operations wherever required. This results in creating
+            multiple connections from the database as each instance of
+            DBConnection class will have a separate connection to the database.
+            In order to deal with it, we create DBConnection class as a
+            singleton class, so that only one instance of DBConnection is
+            created and a single connection is established. Because we can
+            manage DB Connection via one instance, we can control load balance,
+            unnecessary connections, etc.
+          </Text>
+          <Text>
+            2. Suppose you want to create multiple instances of a similar kind
+            and want to achieve loose coupling then you can go for Factory
+            pattern. A class implementing factory design pattern works as a
+            bridge between multiple classes. Consider an example of using
+            multiple database servers like SQL Server and Oracle. If you are
+            developing an application using SQL Server database as back end, but
+            in the future need to change the database to the oracle, you will
+            need to modify all your code, so as factory design patterns maintain
+            loose coupling and easy implementation, we should go for the factory
+            design pattern in order to achieve loose coupling and the creation
+            of a similar kind of object.
+          </Text>
+          <br />
+          <Text m>2. Structural</Text>
+          <Text>
+            These design patterns are about organizing different classes and
+            objects to form larger structures and provide new functionality.
+          </Text>
+          <Text>
+            Structural design patterns are Adapter, Bridge, Composite,
+            Decorator, Facade, Flyweight, Private Class Data, and Proxy.
+          </Text>
+          <br />
+          <Text m>Use Case Of Structural Design Pattern:</Text>
+          <Text>
+            1. When 2 interfaces are not compatible with each other and want to
+            establish a relationship between them through an adapter it’s called
+            an adapter design pattern. The adapter pattern converts the
+            interface of a class into another interface or class that the client
+            expects, i.e adapter lets classes work together that could not
+            otherwise because of incompatibility. so in these types of
+            incompatible scenarios, we can go for the adapter pattern.
+          </Text>
+          <br />
+          <Text m>3. Behavioral</Text>
+          <Text>
+            Behavioral patterns are about identifying common communication
+            patterns between objects and realizing these patterns. Behavioral
+            patterns are Chain of responsibility, Command, Interpreter,
+            Iterator, Mediator, Memento, Null Object, Observer, State, Strategy,
+            Template method, Visitor
+          </Text>
+          <br />
+          <Text m>Use Case Of Behavioral Design Pattern:</Text>
+          <Text>
+            1. The template pattern defines the skeleton of an algorithm in an
+            operation deferring some steps to sub-classes. The template method
+            lets subclasses redefine certain steps of an algorithm without
+            changing the algorithm structure. For example, in your project, you
+            want the behavior of the module to be able to extend, such that we
+            can make the module behave in new and different ways as the
+            requirements of the application change, or to meet the needs of new
+            applications. However, no one is allowed to make source code changes
+            to it, i.e you can add but can’t modify the structure in those
+            scenarios a developer can approach template design pattern.
+          </Text>{" "}
+          <br />
+          <Text m>4. J2EE</Text>
+          <Text>
+            These design patterns are speciically concerned with the
+            presentation tier.
+          </Text>{" "}
+          <Text>
+            These patterns are identified by Sun Java Center.
+          </Text>
         </>
       ),
     },
