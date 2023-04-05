@@ -70,7 +70,34 @@ const DesignPatterns = () => {
   ];
 
   const textContent = [
-    { text: <></> },
+    {
+      text: (
+        <>
+          <Text>
+            Design patterns represent the best practices used by object-oriented
+            software developers.
+          </Text>
+          <Text>
+            Design patterns are solutions to general problems that software
+            developers faced during software development.
+          </Text>
+          <Text>
+            These solutions were obtained by trial and error by numerous
+            software developers over quite a substantial period of time.
+          </Text>
+          <Text>
+            A design pattern systematically names, motivates, and explains a
+            general design that addresses a recurring design problem in
+            object-oriented systems.
+          </Text>
+          <Text>
+            It describes the problem, the solution, when to apply the solution,
+            and its consequences.
+          </Text>
+          <Text>It also gives implementation hints and examples.</Text>
+        </>
+      ),
+    },
     {
       text: (
         <>
