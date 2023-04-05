@@ -15,10 +15,11 @@ export const Text = styled.p`
   font-size: 14px;
   color: #fff;
   margin-bottom: 0.8rem;
+  line-height: 1.3;
   ${({ m }) =>
     m &&
     css`
-      font-size: 17px;
+      font-size: 16px;
       margin-bottom: 1.5rem;
     `};
 `;
