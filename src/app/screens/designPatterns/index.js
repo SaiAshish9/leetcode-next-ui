@@ -112,7 +112,7 @@ const DesignPatterns = () => {
             program is following a singleton pattern.
           </Text>
           <br />
-          <Text m>Best Practices</Text>
+          <Text m>2. Best Practices</Text>
           <Text>
             Design patterns have been evolved over a long period of time and
             they provide best solutions to certain problems faced during
