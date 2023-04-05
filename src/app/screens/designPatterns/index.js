@@ -17,6 +17,15 @@ import MediatorImg from "@/assets/mediator.png";
 import MomentoImg from "@/assets/momento.png";
 import TemplateImg from "@/assets/template.png";
 import VisitorImg from "@/assets/visitor.png";
+import FilterImg from "@/assets/filter.png";
+import MVCImg from "@/assets/mvc.png";
+import DAOImg from "@/assets/dao.png";
+import FCImg from "@/assets/fc.png";
+import SLImg from "@/assets/sl.png";
+import TOImg from "@/assets/to.png";
+import BDImg from "@/assets/bd.png";
+import CEImg from "@/assets/ce.png";
+import IFImg from "@/assets/if.jpeg";
 
 const DesignPatterns = () => {
   const [selectedOption, setSelectedOption] = useState(0);
@@ -46,6 +55,7 @@ const DesignPatterns = () => {
     "Memento",
     "Template",
     "Visitor",
+    "Filter",
     "Intercepting Filter",
     "MVC",
     "Data Access",
@@ -2693,7 +2703,1365 @@ public class VisitorPatternDemo {
       ),
     },
     {
-      text: <></>,
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Filter pattern or Criteria pattern is a design pattern that
+            enables developers to filter a set of objects using different
+            criteria and chaining them in a decoupled way through logical
+            operations.
+          </Text>
+          <Text>
+            2. This type of design pattern comes under structural pattern as
+            this pattern combines multiple criteria to obtain single criteria.
+          </Text>
+          <br />
+          <Text m>Implementation</Text>
+          <Text>
+            1. We're going to create a Person object, Criteria interface and
+            concrete classes implementing this interface to filter list of
+            Person objects.
+          </Text>
+          <Text>
+            2. CriteriaPatternDemo, our demo class uses Criteria objects to
+            filter List of Person objects based on various criteria and their
+            combinations.
+          </Text>
+          <StyledImg alt="img" src={FilterImg} />
+          <Editor
+            value={`public class Person {
+	
+   private String name;
+   private String gender;
+   private String maritalStatus;
+
+   public Person(String name, String gender, String maritalStatus){
+      this.name = name;
+      this.gender = gender;
+      this.maritalStatus = maritalStatus;		
+   }
+
+   public String getName() {
+      return name;
+   }
+   public String getGender() {
+      return gender;
+   }
+   public String getMaritalStatus() {
+      return maritalStatus;
+   }	
+}
+
+import java.util.List;
+
+public interface Criteria {
+   public List<Person> meetCriteria(List<Person> persons);
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CriteriaMale implements Criteria {
+
+   @Override
+   public List<Person> meetCriteria(List<Person> persons) {
+      List<Person> malePersons = new ArrayList<Person>(); 
+      
+      for (Person person : persons) {
+         if(person.getGender().equalsIgnoreCase("MALE")){
+            malePersons.add(person);
+         }
+      }
+      return malePersons;
+   }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CriteriaFemale implements Criteria {
+
+   @Override
+   public List<Person> meetCriteria(List<Person> persons) {
+      List<Person> femalePersons = new ArrayList<Person>(); 
+      
+      for (Person person : persons) {
+         if(person.getGender().equalsIgnoreCase("FEMALE")){
+            femalePersons.add(person);
+         }
+      }
+      return femalePersons;
+   }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CriteriaSingle implements Criteria {
+
+   @Override
+   public List<Person> meetCriteria(List<Person> persons) {
+      List<Person> singlePersons = new ArrayList<Person>(); 
+      
+      for (Person person : persons) {
+         if(person.getMaritalStatus().equalsIgnoreCase("SINGLE")){
+            singlePersons.add(person);
+         }
+      }
+      return singlePersons;
+   }
+}
+
+import java.util.List;
+
+public class AndCriteria implements Criteria {
+
+   private Criteria criteria;
+   private Criteria otherCriteria;
+
+   public AndCriteria(Criteria criteria, Criteria otherCriteria) {
+      this.criteria = criteria;
+      this.otherCriteria = otherCriteria; 
+   }
+
+   @Override
+   public List<Person> meetCriteria(List<Person> persons) {
+   
+      List<Person> firstCriteriaPersons = criteria.meetCriteria(persons);		
+      return otherCriteria.meetCriteria(firstCriteriaPersons);
+   }
+}
+
+import java.util.List;
+
+public class OrCriteria implements Criteria {
+
+   private Criteria criteria;
+   private Criteria otherCriteria;
+
+   public OrCriteria(Criteria criteria, Criteria otherCriteria) {
+      this.criteria = criteria;
+      this.otherCriteria = otherCriteria; 
+   }
+
+   @Override
+   public List<Person> meetCriteria(List<Person> persons) {
+      List<Person> firstCriteriaItems = criteria.meetCriteria(persons);
+      List<Person> otherCriteriaItems = otherCriteria.meetCriteria(persons);
+
+      for (Person person : otherCriteriaItems) {
+         if(!firstCriteriaItems.contains(person)){
+            firstCriteriaItems.add(person);
+         }
+      }	
+      return firstCriteriaItems;
+   }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CriteriaPatternDemo {
+   public static void main(String[] args) {
+      List<Person> persons = new ArrayList<Person>();
+
+      persons.add(new Person("Robert","Male", "Single"));
+      persons.add(new Person("John", "Male", "Married"));
+      persons.add(new Person("Laura", "Female", "Married"));
+      persons.add(new Person("Diana", "Female", "Single"));
+      persons.add(new Person("Mike", "Male", "Single"));
+      persons.add(new Person("Bobby", "Male", "Single"));
+
+      Criteria male = new CriteriaMale();
+      Criteria female = new CriteriaFemale();
+      Criteria single = new CriteriaSingle();
+      Criteria singleMale = new AndCriteria(single, male);
+      Criteria singleOrFemale = new OrCriteria(single, female);
+
+      System.out.println("Males: ");
+      printPersons(male.meetCriteria(persons));
+
+      System.out.println("\nFemales: ");
+      printPersons(female.meetCriteria(persons));
+
+      System.out.println("\nSingle Males: ");
+      printPersons(singleMale.meetCriteria(persons));
+
+      System.out.println("\nSingle Or Females: ");
+      printPersons(singleOrFemale.meetCriteria(persons));
+   }
+
+   public static void printPersons(List<Person> persons){
+   
+      for (Person person : persons) {
+         System.out.println("Person : [ Name : " + person.getName() + ", Gender : " + person.getGender() + ", Marital Status : " + person.getMaritalStatus() + " ]");
+      }
+   }      
+}`}
+            height="197rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Males: </Text>
+          <Text>
+            Person : [ Name : Robert, Gender : Male, Marital Status : Single ]
+          </Text>
+          <Text>
+            Person : [ Name : John, Gender : Male, Marital Status : Married ]
+          </Text>
+          <Text>
+            Person : [ Name : Mike, Gender : Male, Marital Status : Single ]
+          </Text>
+          <Text>
+            Person : [ Name : Bobby, Gender : Male, Marital Status : Single ]
+          </Text>
+
+          <Text>Females: </Text>
+          <Text>
+            Person : [ Name : Laura, Gender : Female, Marital Status : Married ]
+          </Text>
+          <Text>
+            Person : [ Name : Diana, Gender : Female, Marital Status : Single ]
+          </Text>
+
+          <Text>Single Males: </Text>
+          <Text>
+            Person : [ Name : Robert, Gender : Male, Marital Status : Single ]
+          </Text>
+          <Text>
+            Person : [ Name : Mike, Gender : Male, Marital Status : Single ]
+          </Text>
+          <Text>
+            Person : [ Name : Bobby, Gender : Male, Marital Status : Single ]
+          </Text>
+
+          <Text>Single Or Females: </Text>
+          <Text>
+            Person : [ Name : Robert, Gender : Male, Marital Status : Single ]
+          </Text>
+          <Text>
+            Person : [ Name : Diana, Gender : Female, Marital Status : Single ]
+          </Text>
+          <Text>
+            Person : [ Name : Mike, Gender : Male, Marital Status : Single ]
+          </Text>
+          <Text>
+            Person : [ Name : Bobby, Gender : Male, Marital Status : Single ]
+          </Text>
+          <Text>
+            Person : [ Name : Laura, Gender : Female, Marital Status : Married ]
+          </Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. The intercepting filter design pattern is used when we want to do
+            some pre-processing / post-processing with request or response of
+            the application.{" "}
+          </Text>
+          <Text>
+            2. Filters are defined and applied on the request before passing the
+            request to actual target application.{" "}
+          </Text>
+          <Text>
+            3. Filters can do the authentication/ authorization/ logging or
+            tracking of request and then pass the requests to corresponding
+            handlers.
+          </Text>
+          <Text>
+            4. Following are the entities of this type of design pattern.
+          </Text>
+          <Text>
+            5. Filter - Filter which will performs certain task prior or after
+            execution of request by request handler.
+          </Text>
+          <Text>
+            6. Filter Chain - Filter Chain carries multiple filters and help to
+            execute them in defined order on target.
+          </Text>
+          <Text>7. Target - Target object is the request handler</Text>
+          <Text>
+            8. Filter Manager - Filter Manager manages the filters and Filter
+            Chain.
+          </Text>
+          <Text>
+            9. Client - Client is the object who sends request to the Target
+            object.
+          </Text>
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a FilterChain,FilterManager, Target,
+            Client as various objects representing our entities.
+          </Text>{" "}
+          <Text>
+            2. AuthenticationFilter and DebugFilter represent concrete filters.
+          </Text>
+          <Text>
+            3. InterceptingFilterDemo, our demo class, will use Client to
+            demonstrate Intercepting Filter Design Pattern.
+          </Text>
+          <StyledImg src={IFImg} alt="img" />
+          <Editor
+            value={`public interface Filter {
+   public void execute(String request);
+}
+
+public class AuthenticationFilter implements Filter {
+   public void execute(String request){
+      System.out.println("Authenticating request: " + request);
+   }
+}
+
+public class DebugFilter implements Filter {
+   public void execute(String request){
+      System.out.println("request log: " + request);
+   }
+}
+
+public class Target {
+   public void execute(String request){
+      System.out.println("Executing request: " + request);
+   }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FilterChain {
+   private List<Filter> filters = new ArrayList<Filter>();
+   private Target target;
+
+   public void addFilter(Filter filter){
+      filters.add(filter);
+   }
+
+   public void execute(String request){
+      for (Filter filter : filters) {
+         filter.execute(request);
+      }
+      target.execute(request);
+   }
+
+   public void setTarget(Target target){
+      this.target = target;
+   }
+}
+
+public class FilterManager {
+   FilterChain filterChain;
+
+   public FilterManager(Target target){
+      filterChain = new FilterChain();
+      filterChain.setTarget(target);
+   }
+   public void setFilter(Filter filter){
+      filterChain.addFilter(filter);
+   }
+
+   public void filterRequest(String request){
+      filterChain.execute(request);
+   }
+}
+
+public class Client {
+   FilterManager filterManager;
+
+   public void setFilterManager(FilterManager filterManager){
+      this.filterManager = filterManager;
+   }
+
+   public void sendRequest(String request){
+      filterManager.filterRequest(request);
+   }
+}
+
+public class InterceptingFilterDemo {
+   public static void main(String[] args) {
+      FilterManager filterManager = new FilterManager(new Target());
+      filterManager.setFilter(new AuthenticationFilter());
+      filterManager.setFilter(new DebugFilter());
+
+      Client client = new Client();
+      client.setFilterManager(filterManager);
+      client.sendRequest("HOME");
+   }
+}`}
+            height="98rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Authenticating request: HOME</Text>
+          <Text>request log: HOME</Text>
+          <Text>Executing request: HOME</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. MVC Pattern stands for Model-View-Controller Pattern. This
+            pattern is used to separate application concerns.
+          </Text>
+          <Text>
+            2. Model - Model represents an object or JAVA POJO carrying data. It
+            can also have logic to update controller if its data changes.
+          </Text>
+          <Text>
+            3. View - View represents the visualization of the data that model
+            contains.
+          </Text>
+          <Text>
+            4. Controller - Controller acts on both model and view. It controls
+            the data flow into model object and updates the view whenever data
+            changes. It keeps view and model separate.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a Student object acting as a
+            model.StudentView will be a view class which can print student
+            details on console
+          </Text>
+          <Text>
+            and StudentController is the controller class responsible to store
+            data in Student object and update view StudentView accordingly.
+          </Text>
+          <Text>
+            2. MVCPatternDemo, our demo class, will use StudentController to
+            demonstrate use of MVC pattern.
+          </Text>
+          <StyledImg alt="img" src={MVCImg} />
+          <Editor
+            value={`public class Student {
+   private String rollNo;
+   private String name;
+   
+   public String getRollNo() {
+      return rollNo;
+   }
+   
+   public void setRollNo(String rollNo) {
+      this.rollNo = rollNo;
+   }
+   
+   public String getName() {
+      return name;
+   }
+   
+   public void setName(String name) {
+      this.name = name;
+   }
+}
+
+public class StudentView {
+   public void printStudentDetails(String studentName, String studentRollNo){
+      System.out.println("Student: ");
+      System.out.println("Name: " + studentName);
+      System.out.println("Roll No: " + studentRollNo);
+   }
+}
+
+public class StudentController {
+   private Student model;
+   private StudentView view;
+
+   public StudentController(Student model, StudentView view){
+      this.model = model;
+      this.view = view;
+   }
+
+   public void setStudentName(String name){
+      model.setName(name);		
+   }
+
+   public String getStudentName(){
+      return model.getName();		
+   }
+
+   public void setStudentRollNo(String rollNo){
+      model.setRollNo(rollNo);		
+   }
+
+   public String getStudentRollNo(){
+      return model.getRollNo();		
+   }
+
+   public void updateView(){				
+      view.printStudentDetails(model.getName(), model.getRollNo());
+   }	
+}
+
+public class MVCPatternDemo {
+   public static void main(String[] args) {
+
+      //fetch student record based on his roll no from the database
+      Student model  = retriveStudentFromDatabase();
+
+      //Create a view : to write student details on console
+      StudentView view = new StudentView();
+
+      StudentController controller = new StudentController(model, view);
+
+      controller.updateView();
+
+      //update model data
+      controller.setStudentName("John");
+
+      controller.updateView();
+   }
+
+   private static Student retriveStudentFromDatabase(){
+      Student student = new Student();
+      student.setName("Robert");
+      student.setRollNo("10");
+      return student;
+   }
+}
+`}
+            height="99rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Student: </Text>
+          <Text>Name: Robert</Text>
+          <Text>Roll No: 10</Text>
+          <Text>Student: </Text>
+          <Text>Name: John </Text>
+          <Text>Roll No: 10</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Data Access Object Pattern or DAO pattern is used to separate low
+            level data accessing API or operations from high level business
+            services.
+          </Text>
+          <Text>
+            2. Following are the participants in Data Access Object Pattern.
+          </Text>
+          <Text>
+            3. Data Access Object Interface - This interface defines the
+            standard operations to be performed on a model object(s).
+          </Text>
+          <Text>
+            4. Data Access Object concrete class - This class implements above
+            interface.
+          </Text>
+          <Text>
+            This class is responsible to get data from a data source which can
+            be database / xml or any other storage mechanism.
+          </Text>
+          <Text>
+            5. Model Object or Value Object - This object is simple POJO
+            containing get/set methods to store data retrieved using DAO class.
+          </Text>
+          <br />
+          <Text>Implementation:</Text>
+          <Text>
+            6. We are going to create a Student object acting as a Model or
+            Value Object.StudentDao is Data Access Object
+            Interface.StudentDaoImpl is concrete class implementing Data Access
+            Object Interface. DaoPatternDemo,
+          </Text>
+          <Text>
+            our demo class, will use StudentDao to demonstrate the use of Data
+            Access Object pattern.
+          </Text>
+          <StyledImg alt="img" src={DAOImg} />
+          <Editor
+            value={`public class Student {
+   private String name;
+   private int rollNo;
+
+   Student(String name, int rollNo){
+      this.name = name;
+      this.rollNo = rollNo;
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public int getRollNo() {
+      return rollNo;
+   }
+
+   public void setRollNo(int rollNo) {
+      this.rollNo = rollNo;
+   }
+}
+
+import java.util.List;
+
+public interface StudentDao {
+   public List<Student> getAllStudents();
+   public Student getStudent(int rollNo);
+   public void updateStudent(Student student);
+   public void deleteStudent(Student student);
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentDaoImpl implements StudentDao {
+	
+   //list is working as a database
+   List<Student> students;
+
+   public StudentDaoImpl(){
+      students = new ArrayList<Student>();
+      Student student1 = new Student("Robert",0);
+      Student student2 = new Student("John",1);
+      students.add(student1);
+      students.add(student2);		
+   }
+   @Override
+   public void deleteStudent(Student student) {
+      students.remove(student.getRollNo());
+      System.out.println("Student: Roll No " + student.getRollNo() + ", deleted from database");
+   }
+
+   //retrive list of students from the database
+   @Override
+   public List<Student> getAllStudents() {
+      return students;
+   }
+
+   @Override
+   public Student getStudent(int rollNo) {
+      return students.get(rollNo);
+   }
+
+   @Override
+   public void updateStudent(Student student) {
+      students.get(student.getRollNo()).setName(student.getName());
+      System.out.println("Student: Roll No " + student.getRollNo() + ", updated in the database");
+   }
+}
+
+public class DaoPatternDemo {
+   public static void main(String[] args) {
+      StudentDao studentDao = new StudentDaoImpl();
+
+      //print all students
+      for (Student student : studentDao.getAllStudents()) {
+         System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");
+      }
+
+
+      //update student
+      Student student =studentDao.getAllStudents().get(0);
+      student.setName("Michael");
+      studentDao.updateStudent(student);
+
+      //get the student
+      studentDao.getStudent(0);
+      System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");		
+   }
+}
+`}
+            height="109rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Student: [RollNo : 0, Name : Robert ]</Text>
+          <Text>Student: [RollNo : 1, Name : John ]</Text>
+          <Text>Student: Roll No 0, updated in the database</Text>
+          <Text>Student: [RollNo : 0, Name : Michael ]</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. The front controller design pattern is used to provide a
+            centralized request handling mechanism so that all requests will be
+            handled by a single handler. This handler can do the authentication/
+            authorization/ logging or tracking of request and then pass the
+            requests to corresponding handlers. Following are the entities of
+            this type of design pattern.
+          </Text>{" "}
+          <Text>
+            2. Front Controller - Single handler for all kinds of requests
+            coming to the application (either web based/ desktop based).
+          </Text>
+          <Text>
+            3. Dispatcher - Front Controller may use a dispatcher object which
+            can dispatch the request to corresponding specific handler.
+          </Text>
+          <Text>
+            4. View - Views are the object for which the requests are made.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a FrontController and Dispatcher to act as
+            Front Controller and Dispatcher correspondingly.
+          </Text>
+          <Text>
+            2. FrontControllerPatternDemo, our demo class, will use
+            FrontController to demonstrate Front Controller Design Pattern.
+          </Text>
+          <StyledImg alt="img" src={FCImg} />
+          <Editor
+            value={`public class HomeView {
+   public void show(){
+      System.out.println("Displaying Home Page");
+   }
+}
+
+public class StudentView {
+   public void show(){
+      System.out.println("Displaying Student Page");
+   }
+}
+
+public class Dispatcher {
+   private StudentView studentView;
+   private HomeView homeView;
+   
+   public Dispatcher(){
+      studentView = new StudentView();
+      homeView = new HomeView();
+   }
+
+   public void dispatch(String request){
+      if(request.equalsIgnoreCase("STUDENT")){
+         studentView.show();
+      }
+      else{
+         homeView.show();
+      }	
+   }
+}
+
+public class FrontController {
+	
+   private Dispatcher dispatcher;
+
+   public FrontController(){
+      dispatcher = new Dispatcher();
+   }
+
+   private boolean isAuthenticUser(){
+      System.out.println("User is authenticated successfully.");
+      return true;
+   }
+
+   private void trackRequest(String request){
+      System.out.println("Page requested: " + request);
+   }
+
+   public void dispatchRequest(String request){
+      //log each request
+      trackRequest(request);
+      
+      //authenticate the user
+      if(isAuthenticUser()){
+         dispatcher.dispatch(request);
+      }	
+   }
+}
+
+public class FrontControllerPatternDemo {
+   public static void main(String[] args) {
+   
+      FrontController frontController = new FrontController();
+      frontController.dispatchRequest("HOME");
+      frontController.dispatchRequest("STUDENT");
+   }
+}
+`}
+            height="79rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Page requested: HOME</Text>
+          <Text>User is authenticated successfully.</Text>
+          <Text>Displaying Home Page</Text>
+          <Text>Page requested: STUDENT</Text>
+          <Text>User is authenticated successfully.</Text>
+          <Text>Displaying Student Page</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. The service locator design pattern is used when we want to locate
+            various services using JNDI lookup.
+          </Text>
+          <Text>
+            2. Considering high cost of looking up JNDI for a service, Service
+            Locator pattern makes use of caching technique.
+          </Text>
+          <Text>
+            3. For the first time a service is required, Service Locator looks
+            up in JNDI and caches the service object.
+          </Text>
+          <Text>
+            4. Further lookup or same service via Service Locator is done in its
+            cache which improves the performance of application to great extent.
+          </Text>
+          <Text>
+            5. Following are the entities of this type of design pattern
+          </Text>
+          <Text>
+            6. Service - Actual Service which will process the request.
+            Reference of such service is to be looked upon in JNDI server.
+          </Text>
+          <Text>
+            7. Context / Initial Context - JNDI Context carries the reference to
+            service used for lookup purpose.
+          </Text>
+          <Text>
+            8. Service Locator - Service Locator is a single point of contact to
+            get services by JNDI lookup caching the services.
+          </Text>
+          <Text>
+            9. Cache - Cache to store references of services to reuse them
+          </Text>
+          <Text>
+            10. Client - Client is the object that invokes the services via
+            ServiceLocator.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a ServiceLocator,InitialContext, Cache,
+            Service as various objects representing our entities.Service1 and
+            Service2 represent concrete services.
+          </Text>
+          <Text>
+            2. ServiceLocatorPatternDemo, our demo class, is acting as a client
+            here and will use ServiceLocator to demonstrate Service Locator
+            Design Pattern.
+          </Text>
+          <StyledImg alt="img" src={SLImg} />
+          <Editor
+            value={`public interface Service {
+   public String getName();
+   public void execute();
+}
+
+public class Service1 implements Service {
+   public void execute(){
+      System.out.println("Executing Service1");
+   }
+
+   @Override
+   public String getName() {
+      return "Service1";
+   }
+}
+
+public class Service2 implements Service {
+   public void execute(){
+      System.out.println("Executing Service2");
+   }
+
+   @Override
+   public String getName() {
+      return "Service2";
+   }
+}
+
+
+public class InitialContext {
+   public Object lookup(String jndiName){
+   
+      if(jndiName.equalsIgnoreCase("SERVICE1")){
+         System.out.println("Looking up and creating a new Service1 object");
+         return new Service1();
+      }
+      else if (jndiName.equalsIgnoreCase("SERVICE2")){
+         System.out.println("Looking up and creating a new Service2 object");
+         return new Service2();
+      }
+      return null;		
+   }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cache {
+
+   private List<Service> services;
+
+   public Cache(){
+      services = new ArrayList<Service>();
+   }
+
+   public Service getService(String serviceName){
+   
+      for (Service service : services) {
+         if(service.getName().equalsIgnoreCase(serviceName)){
+            System.out.println("Returning cached  " + serviceName + " object");
+            return service;
+         }
+      }
+      return null;
+   }
+
+   public void addService(Service newService){
+      boolean exists = false;
+      
+      for (Service service : services) {
+         if(service.getName().equalsIgnoreCase(newService.getName())){
+            exists = true;
+         }
+      }
+      if(!exists){
+         services.add(newService);
+      }
+   }
+}
+
+public class ServiceLocator {
+   private static Cache cache;
+
+   static {
+      cache = new Cache();		
+   }
+
+   public static Service getService(String jndiName){
+
+      Service service = cache.getService(jndiName);
+
+      if(service != null){
+         return service;
+      }
+
+      InitialContext context = new InitialContext();
+      Service service1 = (Service)context.lookup(jndiName);
+      cache.addService(service1);
+      return service1;
+   }
+}
+
+public class ServiceLocatorPatternDemo {
+   public static void main(String[] args) {
+      Service service = ServiceLocator.getService("Service1");
+      service.execute();
+      service = ServiceLocator.getService("Service2");
+      service.execute();
+      service = ServiceLocator.getService("Service1");
+      service.execute();
+      service = ServiceLocator.getService("Service2");
+      service.execute();		
+   }
+}
+`}
+            height="130rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Looking up and creating a new Service1 object</Text>
+          <Text>Executing Service1</Text>
+          <Text>Looking up and creating a new Service2 object</Text>
+          <Text>Executing Service2</Text>
+          <Text>Returning cached Service1 object</Text>
+          <Text>Executing Service1</Text>
+          <Text>Returning cached Service2 object</Text>
+          <Text>Executing Service2</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. The Transfer Object pattern is used when we want to pass data
+            with multiple attributes in one shot from client to server.
+          </Text>
+          <Text>2. Transfer object is also known as Value Object. </Text>
+          <Text>
+            3. Transfer Object is a simple POJO class having getter/setter
+            methods and is serializable so that it can be transferred over the
+            network.
+          </Text>
+          <Text>
+            4. It does not have any behavior. Server Side business class
+            normally fetches data from the database and fills the POJO and send
+            it to the client or pass it by value. For client, transfer object is
+            read-only.
+          </Text>
+          <Text>
+            5. Client can create its own transfer object and pass it to server
+            to update values in database in one shot. Following are the entities
+            of this type of design pattern.
+          </Text>
+          <Text>
+            6. Business Object - Business Service fills the Transfer Object with
+            data.
+          </Text>
+          <Text>
+            7. Transfer Object - Simple POJO having methods to set/get
+            attributes only.
+          </Text>
+          <Text>
+            8. Client - Client either requests or sends the Transfer Object to
+            Business Object.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <Text>
+            1. We are going to create a StudentBO as Business Object,Student as
+            Transfer Object representing our entities.
+          </Text>
+          <Text>
+            2. TransferObjectPatternDemo, our demo class, is acting as a client
+            here and will use StudentBO and Student to demonstrate Transfer
+            Object Design Pattern.
+          </Text>
+          <StyledImg alt="img" src={TOImg} />
+          <Editor
+            value={`public class StudentVO {
+   private String name;
+   private int rollNo;
+
+   StudentVO(String name, int rollNo){
+      this.name = name;
+      this.rollNo = rollNo;
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public int getRollNo() {
+      return rollNo;
+   }
+
+   public void setRollNo(int rollNo) {
+      this.rollNo = rollNo;
+   }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentBO {
+	
+   //list is working as a database
+   List<StudentVO> students;
+
+   public StudentBO(){
+      students = new ArrayList<StudentVO>();
+      StudentVO student1 = new StudentVO("Robert",0);
+      StudentVO student2 = new StudentVO("John",1);
+      students.add(student1);
+      students.add(student2);		
+   }
+   public void deleteStudent(StudentVO student) {
+      students.remove(student.getRollNo());
+      System.out.println("Student: Roll No " + student.getRollNo() + ", deleted from database");
+   }
+
+   //retrive list of students from the database
+   public List<StudentVO> getAllStudents() {
+      return students;
+   }
+
+   public StudentVO getStudent(int rollNo) {
+      return students.get(rollNo);
+   }
+
+   public void updateStudent(StudentVO student) {
+      students.get(student.getRollNo()).setName(student.getName());
+      System.out.println("Student: Roll No " + student.getRollNo() +", updated in the database");
+   }
+}
+
+public class TransferObjectPatternDemo {
+   public static void main(String[] args) {
+      StudentBO studentBusinessObject = new StudentBO();
+
+      //print all students
+      for (StudentVO student : studentBusinessObject.getAllStudents()) {
+         System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");
+      }
+
+      //update student
+      StudentVO student = studentBusinessObject.getAllStudents().get(0);
+      student.setName("Michael");
+      studentBusinessObject.updateStudent(student);
+
+      //get the student
+      student = studentBusinessObject.getStudent(0);
+      System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");
+   }
+}
+`}
+            height="94rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Student: [RollNo : 0, Name : Robert ]</Text>
+          <Text>Student: [RollNo : 1, Name : John ]</Text>
+          <Text>Student: Roll No 0, updated in the database</Text>
+          <Text>Student: [RollNo : 0, Name : Michael ]</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Business Delegate Pattern is used to decouple presentation tier
+            and business tier.
+          </Text>
+          <Text>
+            2. It is basically use to reduce communication or remote lookup
+            functionality to business tier code in presentation tier code. In
+            business tier we have following entities.
+          </Text>
+          <Text>
+            3. Client - Presentation tier code may be JSP, servlet or UI java
+            code.
+          </Text>
+          <Text>
+            4. Business Delegate - A single entry point class for client
+            entities to provide access to Business Service methods.
+          </Text>
+          <Text>
+            5. LookUp Service - Lookup service object is responsible to get
+            relative business implementation and provide business object access
+            to business delegate object.
+          </Text>
+          <Text>
+            6. Business Service - Business Service interface. Concrete classes
+            implement this business service to provide actual business
+            implementation logic.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <StyledImg alt="img" src={BDImg} />
+          <Editor
+            value={`public interface BusinessService {
+   public void doProcessing();
+}
+
+public class EJBService implements BusinessService {
+
+   @Override
+   public void doProcessing() {
+      System.out.println("Processing task by invoking EJB Service");
+   }
+}
+
+public class JMSService implements BusinessService {
+
+   @Override
+   public void doProcessing() {
+      System.out.println("Processing task by invoking JMS Service");
+   }
+}
+
+public class BusinessLookUp {
+   public BusinessService getBusinessService(String serviceType){
+   
+      if(serviceType.equalsIgnoreCase("EJB")){
+         return new EJBService();
+      }
+      else {
+         return new JMSService();
+      }
+   }
+}
+
+public class BusinessDelegate {
+   private BusinessLookUp lookupService = new BusinessLookUp();
+   private BusinessService businessService;
+   private String serviceType;
+
+   public void setServiceType(String serviceType){
+      this.serviceType = serviceType;
+   }
+
+   public void doTask(){
+      businessService = lookupService.getBusinessService(serviceType);
+      businessService.doProcessing();		
+   }
+}
+
+public class Client {
+	
+   BusinessDelegate businessService;
+
+   public Client(BusinessDelegate businessService){
+      this.businessService  = businessService;
+   }
+
+   public void doTask(){		
+      businessService.doTask();
+   }
+}
+
+public class BusinessDelegatePatternDemo {
+	
+   public static void main(String[] args) {
+
+      BusinessDelegate businessDelegate = new BusinessDelegate();
+      businessDelegate.setServiceType("EJB");
+
+      Client client = new Client(businessDelegate);
+      client.doTask();
+
+      businessDelegate.setServiceType("JMS");
+      client.doTask();
+   }
+}
+`}
+            height="87rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Processing task by invoking EJB Service</Text>
+          <Text>Processing task by invoking JMS Service</Text>
+        </>
+      ),
+    },
+    {
+      text: (
+        <>
+          <Text m>Properties:</Text>
+          <Text>
+            1. Composite Entity pattern is used in EJB persistence mechanism. A
+            Composite entity is an EJB entity bean which represents a graph of
+            objects.
+          </Text>
+          <Text>
+            When a composite entity is updated, internally dependent objects
+            beans get updated automatically as being managed by EJB entity bean.
+            Following are the participants in Composite Entity Bean.
+          </Text>
+          <Text>
+            2. Composite Entity - It is primary entity bean. It can be coarse
+            grained or can contain a coarse grained object to be used for
+            persistence purpose.
+          </Text>
+          <Text>
+            3. Coarse-Grained Object - This object contains dependent objects.
+            It has its own life cycle and also manages life cycle of dependent
+            objects.
+          </Text>
+          <Text>
+            4. Dependent Object - Dependent object is an object which depends on
+            coarse grained object for its persistence lifecycle.
+          </Text>
+          <Text>
+            5. Strategies - Strategies represents how to implement a Composite
+            Entity.
+          </Text>
+          <br />
+          <Text m>Implementation:</Text>
+          <StyledImg alt="img" src={CEImg} />
+          <Editor
+            value={`public class DependentObject1 {
+	
+   private String data;
+
+   public void setData(String data){
+      this.data = data; 
+   } 
+
+   public String getData(){
+      return data;
+   }
+}
+
+public class DependentObject2 {
+	
+   private String data;
+
+   public void setData(String data){
+      this.data = data; 
+   } 
+
+   public String getData(){
+      return data;
+   }
+}
+
+public class CoarseGrainedObject {
+   DependentObject1 do1 = new DependentObject1();
+   DependentObject2 do2 = new DependentObject2();
+
+   public void setData(String data1, String data2){
+      do1.setData(data1);
+      do2.setData(data2);
+   }
+
+   public String[] getData(){
+      return new String[] {do1.getData(),do2.getData()};
+   }
+}
+
+public class CompositeEntity {
+   private CoarseGrainedObject cgo = new CoarseGrainedObject();
+
+   public void setData(String data1, String data2){
+      cgo.setData(data1, data2);
+   }
+
+   public String[] getData(){
+      return cgo.getData();
+   }
+}
+
+public class Client {
+   private CompositeEntity compositeEntity = new CompositeEntity();
+
+   public void printData(){
+   
+      for (int i = 0; i < compositeEntity.getData().length; i++) {
+         System.out.println("Data: " + compositeEntity.getData()[i]);
+      }
+   }
+
+   public void setData(String data1, String data2){
+      compositeEntity.setData(data1, data2);
+   }
+}
+
+public class CompositeEntityPatternDemo {
+   public static void main(String[] args) {
+   
+       Client client = new Client();
+       client.setData("Test", "Data");
+       client.printData();
+       client.setData("Second Test", "Data1");
+       client.printData();
+   }
+}`}
+            height="90rem"
+          />
+          <Text m>Output:</Text>
+          <Text>Data: Test</Text>
+          <Text>Data: Data</Text>
+          <Text>Data: Second Test</Text>
+          <Text>Data: Data1</Text>
+        </>
+      ),
     },
   ];
 
