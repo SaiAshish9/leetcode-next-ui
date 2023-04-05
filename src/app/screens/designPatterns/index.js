@@ -26,6 +26,7 @@ import TOImg from "@/assets/to.png";
 import BDImg from "@/assets/bd.png";
 import CEImg from "@/assets/ce.png";
 import IFImg from "@/assets/if.jpeg";
+import PatternsImg from "@/assets/patterns.png";
 
 const DesignPatterns = () => {
   const [selectedOption, setSelectedOption] = useState(0);
@@ -70,7 +71,68 @@ const DesignPatterns = () => {
 
   const textContent = [
     { text: <></> },
-    { text: <></> },
+    {
+      text: (
+        <>
+          <Text>
+            In 1994, four authors Erich Gamma, Richard Helm, Ralph Johnson and
+            John Vlissides published a book titled
+          </Text>
+          <Text>
+            Design Patterns - Elements of Reusable Object-Oriented Software
+            which initiated the concept of Design Pattern in Software
+            development.
+          </Text>
+          <Text>
+            These authors are collectively known as Gang of Four (GOF).
+          </Text>
+          <Text>
+            According to these authors design patterns are primarily based on
+            the following principles of object orientated design:
+          </Text>
+          <Text>1. Program to an interface not an implementation</Text>
+          <Text>2. Favor object composition over inheritance</Text>
+          <br />
+          <Text m>Usage of Design Pattern</Text>
+          <Text>
+            Design Patterns have two main usages in software development.
+          </Text>
+          <Text>1. Common platform for developers</Text>
+          <Text>
+            Design patterns provide a standard terminology and are specific to
+            particular scenario.
+          </Text>
+          <Text>
+            {" "}
+            For example, a singleton design pattern signifies use of single
+            object so all developers familiar with single design pattern
+          </Text>
+          <Text>
+            will make use of single object and they can tell each other that
+            program is following a singleton pattern.
+          </Text>
+          <br />
+          <Text m>Best Practices</Text>
+          <Text>
+            Design patterns have been evolved over a long period of time and
+            they provide best solutions to certain problems faced during
+            software development.{" "}
+          </Text>
+          <Text>
+            Learning these patterns helps unexperienced developers to learn
+            software design in an easy and faster way.
+          </Text>
+          <Text m>Types of Design Patterns:</Text>
+          <Text>
+            As per the design pattern reference book Design Patterns - Elements
+            of Reusable Object-Oriented Software , there are multiple design
+            patterns which can be classified in 4 categories: Creational,
+            Structural Behavioral patterns, & J2EE design patterns.
+          </Text>
+          <StyledImg src={PatternsImg} alt="img" />
+        </>
+      ),
+    },
     {
       text: (
         <>
