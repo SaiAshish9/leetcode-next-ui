@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Option } from "./styles";
+import { Container, InputContainer, Option, StyledSearchImage, TextInputContainer } from "./styles";
+import SearchIcon from "@/assets/search.svg";
 
 const SideNav = ({ selectedOption, setSelectedOption, options }) => {
   function handleClick(e, option) {
@@ -10,7 +11,12 @@ const SideNav = ({ selectedOption, setSelectedOption, options }) => {
 
   return (
     <Container>
-      <Option>Search Pattern (32)</Option>
+      <Option>
+        <TextInputContainer>
+          <StyledSearchImage src={SearchIcon} alt="img" />
+          <InputContainer placeholder="Search questions" />
+        </TextInputContainer>
+      </Option>
       {options?.map((i, k) => (
         <Option
           onClick={(e) => handleClick(e, k)}

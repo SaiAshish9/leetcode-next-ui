@@ -103,6 +103,7 @@ export const InputContainer = styled.input`
   padding-left: 0.375rem;
   padding-right: 0.25rem;
   font-size: 0.85rem;
+  color: #fff !important;
   &:placeholder {
     color: rgba(138 138 138, 0.7);
   }

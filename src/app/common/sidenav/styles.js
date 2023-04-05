@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import Image from "next/image";
 
 export const Container = styled.div`
   width: 17vw;
@@ -23,4 +24,29 @@ export const Option = styled.p`
     css`
       border-left: 4px solid #fff;
     `}
+`;
+
+
+export const StyledSearchImage = styled(Image)`
+  height: 1.08rem;
+  width: 1.08rem;
+`;
+
+export const TextInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+export const InputContainer = styled.input`
+  border: none;
+  outline: none;
+  color: #fff !important;
+  background-color: transparent;
+  padding-left: 0.375rem;
+  padding-right: 0.25rem;
+  font-size: 0.9rem;
+  &:placeholder {
+    color: rgba(138 138 138, 0.7);
+  }
 `;
