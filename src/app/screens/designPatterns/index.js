@@ -336,7 +336,7 @@ const DesignPatterns = () => {
         <>
           <Text m>Properties:</Text>
           <Text>
-            1. Creational design pattern (It's related to the creation of object
+            1. Creational design pattern (It{"'"}s related to the creation of object
             in java).
           </Text>
           <Text>
@@ -365,7 +365,7 @@ const DesignPatterns = () => {
           </Text>
           <Text>2. Lazy Initialisation</Text>
           <Text>
-            Whenever there's a need ot a call, then only it will create the
+            Whenever there{"'"}s a need ot a call, then only it will create the
             object.
           </Text>
           <Text>3. Thread safe method initialisation</Text>
@@ -523,30 +523,30 @@ public class FactoryPatternExample {
           </Text>
           <Text>and its hard to maintain the order.</Text>
           <Text>
-            3. When we don't want to send all parameters in object
+            3. When we don{"'"}t want to send all parameters in object
             initialisation
           </Text>
           <Text>(Generally we send optional parameters as null)</Text>
           <br />
           <Text m>Implementation:</Text>
           <Text>
-            1. We create a 'static nested class', which contains all arguments
+            1. We create a {"'"}static nested class{"'"}, which contains all arguments
             of outer class.
           </Text>
           <Text>
-            2. As per naming convention, if class name is 'Vehicle', builder
-            class should be 'VehicleBuilder'
+            2. As per naming convention, if class name is {"'"}Vehicle{"'"}, builder
+            class should be {"'"}VehicleBuilder{"'"}
           </Text>
           <Text>
             3. Builder class have a public constructor with all required
             parameters
           </Text>
-          <Text>4. A 'build()' method that will return the final object</Text>
+          <Text>4. A {"'"}build(){"'"} method that will return the final object</Text>
           <Text>
-            5. The main class 'Vehicle' has private constructor so to create
+            5. The main class {"'"}Vehicle{"'"} has private constructor so to create
             instance only via Builder class.
           </Text>
-          <Text>6. The main class 'Vehicle' has only getters</Text>
+          <Text>6. The main class {"'"}Vehicle{"'"} has only getters</Text>
           <Editor
             value={`package builder;
 
@@ -632,7 +632,7 @@ public class BuilderPatternExample {
           <br />
           <Text m>Implementation:</Text>
           <Text>
-            1. Object which we're copying should provide copying feature
+            1. Object which we{"'"}re copying should provide copying feature
           </Text>
           <Text>by implementing cloneable interface.</Text>
           <Text>
@@ -710,18 +710,18 @@ public class PrototypePatternExample {
           </Text>
           <Text>
             3. Used when we want to control access, i.e. In databases, we would
-            want to control the 'delete' query available only for certain users
+            want to control the {"'"}delete{"'"} query available only for certain users
             like admin.
           </Text>
           <br />
           <Text m>Implementation:</Text>
           <Text>
-            1. In general, we've class which is executing interface executor
+            1. In general, we{"'"}ve class which is executing interface executor
             method, which is executing all commands.
           </Text>
           <Text>
             2. To control this, we add a proxy class which implements the same
-            interface and write the conditions for 'admin' user before
+            interface and write the conditions for {"'"}admin{"'"} user before
             proceeding to actual executor.
           </Text>
           <Editor
@@ -791,7 +791,7 @@ public class ProxyPatternExample {
           </Text>
           <Text>2. Structural design</Text>
           <Text>
-            3. Used when there're multiple interfaces of similar kind of jobs,
+            3. Used when there{"'"}re multiple interfaces of similar kind of jobs,
             then we add a Facade interface, which provides better interface to
             these interfaces and clients.
           </Text>
@@ -802,7 +802,7 @@ public class ProxyPatternExample {
           <br />
           <Text m>Implementation:</Text>
           <Text>
-            1. We'll implement a Facade helper class, which will route to method
+            1. We{"'"}ll implement a Facade helper class, which will route to method
             related to specific class based on input.
           </Text>
           <Editor
@@ -905,7 +905,7 @@ public class FacadePatternExample {
           <Text>2. Leaf: Deposite Account & Savings Account</Text>
           <Text>3. Composite: Composite Account</Text>
           <Text>4. Client: Client class</Text>
-          <Text>5. We'll get balance of all account for a Person</Text>
+          <Text>5. We{"'"}ll get balance of all account for a Person</Text>
           <Editor
             value={`package composite;
 
@@ -1119,7 +1119,7 @@ public class DecoratorPatterTest {
             Extrinsic Property: Skills We use Factory to use return Object:
           </Text>
           <Text>
-            EmployeeFactory Client: Client class We'll assign issues as per
+            EmployeeFactory Client: Client class We{"'"}ll assign issues as per
             skills
           </Text>
           <Editor
@@ -1356,12 +1356,12 @@ public class AdapterDesignPattern {
             Implementation
           </Text>
           <Text>
-            3. Used when we've hierarchies in both interfaces as well as
+            3. Used when we{"'"}ve hierarchies in both interfaces as well as
             implementations and
           </Text>
           <Text>4. It decouples abstraction from its implementation</Text>
           <Text>
-            5. Generally we've remote, which works differently for Sony &
+            5. Generally we{"'"}ve remote, which works differently for Sony &
             Philips TV, but we can have different Remote as well, i.e. oldRemote
             & newRemote, which have different methods for each TV.
           </Text>
@@ -2467,7 +2467,7 @@ public class InterpreterPatternDemo {
           <br />
           <Text m>Implementation:</Text>
           <Text>
-            1. We're going to create a Iterator interface which narrates
+            1. We{"'"}re going to create a Iterator interface which narrates
             navigation method and a Container interface which retruns the
             iterator.
           </Text>
@@ -2983,7 +2983,7 @@ public class VisitorPatternDemo {
           <br />
           <Text m>Implementation</Text>
           <Text>
-            1. We're going to create a Person object, Criteria interface and
+            1. We{"'"}re going to create a Person object, Criteria interface and
             concrete classes implementing this interface to filter list of
             Person objects.
           </Text>

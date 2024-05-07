@@ -30,7 +30,7 @@ const textContent = [
         <Text>3. “Program to interfaces”</Text>
         <Text>4. “Loose coupling”</Text>
         <Text>5. SOLID principles</Text>
-        <Text>6. DRY (Don't Repeat Yourself) Principles</Text>
+        <Text>6. DRY (Don{"'"}t Repeat Yourself) Principles</Text>
         <Text>7. KISS (Keep It Simple and Stupid Principle) Principle</Text>
         <Text>8. Composition Over Inheritance Principle</Text>
         <br />
@@ -114,7 +114,7 @@ const textContent = [
             designing or creating classes for our application.
           </Text>
           <Text>
-            SRP does not provide specific implementation steps but it's up to
+            SRP does not provide specific implementation steps but it{"'"}s up to
             you how you implement SRP in your application.
           </Text>
           <br />
@@ -174,7 +174,7 @@ const textContent = [
         </Text>
         <br />
         <Text>
-          Here's the github link for understanding various design principles:{" "}
+          Here{"'"}s the github link for understanding various design principles:{" "}
         </Text>
         <Text>https://github.com/Java-Techie-jt/solid-principles-example</Text>
       </>
@@ -202,7 +202,7 @@ const textContent = [
 }`}
         />
         <Text>
-          Above code has multiple responsibilities and hence it doesn't meet
+          Above code has multiple responsibilities and hence it doesn{"'"}t meet
           single responsibility principle.
         </Text>
         <Text>Example 2:</Text>
@@ -259,7 +259,7 @@ const textContent = [
 }`}
         />
         <Text>
-          This class has multiple responsibilities and hence it doesn't obey
+          This class has multiple responsibilities and hence it doesn{"'"}t obey
           single responsibility principle.{" "}
         </Text>
         <Text>
@@ -438,11 +438,11 @@ void test(Rectangle r){
 }`}
         />
         <Text>
-          Square won't pass here as width and height will be the same.
+          Square won{"'"}t pass here as width and height will be the same.
         </Text>
         <Text>
           Inheritance should only be used when super class is replacable by sub
-          class. It shouldn't be used just to save a few lines of code.
+          class. It shouldn{"'"}t be used just to save a few lines of code.
         </Text>
       </>
     ),
@@ -459,7 +459,7 @@ void test(Rectangle r){
           smallest possible interface.
         </Text>
         <Text>
-          Clients should not be forced to implement interfaces they don't use.
+          Clients should not be forced to implement interfaces they don{"'"}t use.
         </Text>
         <Text>
           Instead of one fat interface many small interfaces are preferred based
@@ -596,7 +596,7 @@ public class Bike implements Vehicle {
         />
         <Text>
           copy method can read from any reader and write to any writer it
-          doesn't change when we've a new reader.
+          doesn{"'"}t change when we{"'"}ve a new reader.
         </Text>
         <Text>Example 2:</Text>
         <Text>
